@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Basic\EBOWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Basic\MainGLFourWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Basic\MoreAttributesWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CameraWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CoordinatesSystemsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Basic\MultipleTexturesWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Basic\TexturesWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Basic\TransformationsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Basic\UniformsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Basic\EBOWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Basic\MainGLFourWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Basic\MainGLWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Basic\MoreAttributesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CameraWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CoordinatesSystemsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Basic\MultipleTexturesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Basic\TexturesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Basic\TransformationsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Basic\UniformsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

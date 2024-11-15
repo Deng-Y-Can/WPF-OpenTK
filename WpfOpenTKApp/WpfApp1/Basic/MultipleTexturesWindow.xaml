@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfApp.MultipleTexturesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="MultipleTexturesWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid Name="grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="245*"/>
+            <ColumnDefinition Width="84*"/>
+            <ColumnDefinition Width="71*"/>
+        </Grid.ColumnDefinitions>
+        <WindowsFormsHost Width="351" Name="chart" HorizontalAlignment="Right" Margin="0,74,90,96" />
+        <Button Grid.Column="1" Content="Button" HorizontalAlignment="Center" Margin="0,98,0,0" VerticalAlignment="Top" Height="40" Width="78"/>
+    </Grid>
+</Window>
