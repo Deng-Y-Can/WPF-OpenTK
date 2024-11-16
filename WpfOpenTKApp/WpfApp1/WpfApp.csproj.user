@@ -37,6 +37,9 @@
     <Compile Update="Basic\UniformsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="CubeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AssimpWindow.xaml">
@@ -70,6 +73,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Basic\UniformsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CubeWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

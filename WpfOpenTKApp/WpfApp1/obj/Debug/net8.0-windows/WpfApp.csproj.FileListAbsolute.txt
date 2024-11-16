@@ -309,3 +309,5 @@ E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-window
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\WpfApp.pdb
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\WpfApp.genruntimeconfig.cache
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\ref\WpfApp.dll
+E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\CubeWindow.g.cs
+E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\CubeWindow.baml
