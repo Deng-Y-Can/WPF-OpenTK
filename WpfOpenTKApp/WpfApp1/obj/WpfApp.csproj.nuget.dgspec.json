@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\WpfApp1\\WpfApp.csproj": {}
+    "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\WpfApp.csproj": {}
   },
   "projects": {
-    "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\Common\\Common.csproj": {
+    "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\Common\\Common.csproj",
+        "projectUniqueName": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\Common\\Common.csproj",
+        "projectPath": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Common.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\Common\\obj\\",
+        "outputPath": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\vs\\NuGetPackages",
-          "E:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,8 +45,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -77,22 +78,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\WpfApp1\\WpfApp.csproj": {
+    "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\WpfApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\WpfApp1\\WpfApp.csproj",
+        "projectUniqueName": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\WpfApp.csproj",
         "projectName": "WpfApp",
-        "projectPath": "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\WpfApp1\\WpfApp.csproj",
+        "projectPath": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\WpfApp.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\WpfApp1\\obj\\",
+        "outputPath": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\vs\\NuGetPackages",
-          "E:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -112,8 +113,8 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\Common\\Common.csproj": {
-                "projectPath": "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\Common\\Common.csproj"
+              "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Common.csproj": {
+                "projectPath": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Common.csproj"
               }
             }
           }
@@ -126,13 +127,18 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "AssimpNet": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "Microsoft.Windows.Compatibility": {
               "target": "Package",
               "version": "[8.0.10, )"
@@ -169,7 +175,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

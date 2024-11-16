@@ -185,5 +185,106 @@ namespace LearnOpenTK.Common
             GL.UseProgram(Handle);
             GL.Uniform3(_uniformLocations[name], data);
         }
+
+
+        public Shader(string vert, string frag, int id)
+        {
+            var shaderSource = vert;
+
+            var vertexShader = GL.CreateShader(ShaderType.VertexShader);
+            GL.ShaderSource(vertexShader, shaderSource);
+
+            CompileShader(vertexShader);
+
+            shaderSource = frag;
+
+            var fragmentShader = GL.CreateShader(ShaderType.FragmentShader);
+            GL.ShaderSource(fragmentShader, shaderSource);
+            CompileShader(fragmentShader);
+
+            Handle = GL.CreateProgram();
+
+            // Attach both shaders...
+            GL.AttachShader(Handle, vertexShader);
+            GL.AttachShader(Handle, fragmentShader);
+
+            // And then link them together.
+            LinkProgram(Handle);
+
+            GL.DetachShader(Handle, vertexShader);
+            GL.DetachShader(Handle, fragmentShader);
+            GL.DeleteShader(fragmentShader);
+            GL.DeleteShader(vertexShader);
+
+            GL.GetProgram(Handle, GetProgramParameterName.ActiveUniforms, out var numberOfUniforms);
+            _uniformLocations = new Dictionary<string, int>();
+
+            // Loop over all the uniforms,
+            for (var i = 0; i < numberOfUniforms; i++)
+            {
+                // get the name of this uniform,
+                var key = GL.GetActiveUniform(Handle, i, out _, out _);
+
+                // get the location,
+                var location = GL.GetUniformLocation(Handle, key);
+
+                // and then add it to the dictionary.
+                _uniformLocations.Add(key, location);
+            }
+        }
+
+
+        public readonly static string vertShader = $@"
+          #version 330 core
+
+layout(location = 0) in vec3 aPosition;
+
+//out vec3 texCoord;
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+void main(void)
+{{
+   //texCoord=aPosition;
+    gl_Position = vec4(aPosition, 1.0) * model * view * projection;
+}}
+         ";
+
+
+        public readonly static string fragShader = $@"
+#version 330
+out vec4 outputColor;
+//in vec3 texCoord;
+void main()
+{{
+     outputColor = vec4(1.0, 1.0, 0.0, 1.0);
+    //if(texCoord.z < 0.1)
+    //    outputColor = vec4(0.5, 0.0, 0.0, 1.0);
+    //else
+    //     if(texCoord.z<0.4)
+    //           outputColor = vec4(0.0, 1.0, 0.0, 1.0);
+    //      else 
+    //        outputColor = vec4(0.0, 0.0, 1.0, 1.0);
+}}
+         ";
+
+        public readonly static string fragPickShader = $@"
+#version 330
+out vec4 outputColor;
+//in vec3 texCoord;
+void main()
+{{
+     outputColor = vec4(1.0, 0.0, 1.0, 1.0);
+    //if(texCoord.z < 0.1)
+    //    outputColor = vec4(0.5, 0.0, 0.0, 1.0);
+    //else
+    //     if(texCoord.z<0.4)
+    //           outputColor = vec4(0.0, 1.0, 0.0, 1.0);
+    //      else 
+    //        outputColor = vec4(0.0, 0.0, 1.0, 1.0);
+}}
+         ";
     }
+
 }

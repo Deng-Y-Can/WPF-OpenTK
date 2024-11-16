@@ -15,10 +15,11 @@
       "C:\\Users\\Acer\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\Acer\\.nuget\\packages",
       "E:\\vs\\NuGetPackages",
-      "E:\\Microsoft\\Xamarin\\NuGet"
+      "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
     ],
     "configProperties": {
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": true,
+      "CSWINRT_USE_WINDOWS_UI_XAML_PROJECTIONS": false,
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
     }
   }

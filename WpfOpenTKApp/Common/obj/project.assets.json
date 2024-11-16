@@ -439,20 +439,20 @@
   "packageFolders": {
     "C:\\Users\\Acer\\.nuget\\packages\\": {},
     "E:\\vs\\NuGetPackages": {},
-    "E:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\Common\\Common.csproj",
+      "projectUniqueName": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Common.csproj",
       "projectName": "Common",
-      "projectPath": "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\Common\\Common.csproj",
+      "projectPath": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Common.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "E:\\home\\openTK\\OpenTKUser\\WpfOpenTKApp\\Common\\obj\\",
+      "outputPath": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "E:\\vs\\NuGetPackages",
-        "E:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
         "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -482,8 +482,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
-      }
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -514,7 +515,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
