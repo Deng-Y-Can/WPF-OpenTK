@@ -10,6 +10,9 @@
     <Compile Update="AssimpWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Light\BasicLightWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Basic\EBOWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -20,6 +23,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="CameraWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Light\ColorWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="CoordinatesSystemsWindow.xaml.cs">
@@ -40,9 +46,15 @@
     <Compile Update="CubeWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MaterialsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AssimpWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Light\BasicLightWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Basic\EBOWindow.xaml">
@@ -58,6 +70,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="CameraWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Light\ColorWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="CoordinatesSystemsWindow.xaml">
@@ -76,6 +91,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="CubeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MaterialsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

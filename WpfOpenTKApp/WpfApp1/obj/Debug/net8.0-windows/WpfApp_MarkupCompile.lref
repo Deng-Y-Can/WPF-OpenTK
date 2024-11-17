@@ -12,4 +12,7 @@ FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\UniformsWindow.x
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\CameraWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\CoordinatesSystemsWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\CubeWindow.xaml;;
+FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Light\BasicLightWindow.xaml;;
+FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Light\ColorWindow.xaml;;
+FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\MaterialsWindow.xaml;;
 
