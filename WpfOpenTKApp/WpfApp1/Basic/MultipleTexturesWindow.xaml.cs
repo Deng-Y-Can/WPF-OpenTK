@@ -60,8 +60,8 @@ namespace WpfApp
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
             GL.BufferData(BufferTarget.ElementArrayBuffer, _indices.Length * sizeof(uint), _indices, BufferUsageHint.StaticDraw);
 
-            // shader.frag has been modified yet again, take a look at it as well.
-            _shader = new Shader("Shaders/shader6.vert", "Shaders/shader6.frag");
+          
+            _shader = new Shader(vertMainShader, fragMainShader, 0);
             _shader.Use();
 
             var vertexLocation = _shader.GetAttribLocation("aPosition");
@@ -73,17 +73,15 @@ namespace WpfApp
             GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
 
             _texture = Texture.LoadFromFile("Resources/rsb.jpg");
-            // Texture units are explained in Texture.cs, at the Use function.
-            // First texture goes in texture unit 0.
+           
             _texture.Use(TextureUnit.Texture0);
 
-            // This is helpful because System.Drawing reads the pixels differently than OpenGL expects.
+            
             _texture2 = Texture.LoadFromFile("Resources/cww.jpg");
-            // Then, the second goes in texture unit 1.
+            
             _texture2.Use(TextureUnit.Texture1);
 
-            // Next, we must setup the samplers in the shaders to use the right textures.
-            // The int we send to the uniform indicates which texture unit the sampler should use.
+           
             _shader.SetInt("texture0", 0);
             _shader.SetInt("texture1", 1);
 
@@ -126,5 +124,39 @@ namespace WpfApp
             // 指定这个GLControl作为chart控件的child
             chart.Child = optkGL;
         }
+
+        public readonly static string vertMainShader = $@"
+#version 330 core
+
+layout(location = 0) in vec3 aPosition;
+
+layout(location = 1) in vec2 aTexCoord;
+
+out vec2 texCoord;
+
+void main(void)
+{{
+    texCoord = aTexCoord;
+
+    gl_Position = vec4(aPosition, 1.0);
+}}
+  ";
+
+
+        public readonly static string fragMainShader = $@"
+  #version 330
+
+out vec4 outputColor;
+
+in vec2 texCoord;
+
+uniform sampler2D texture0;
+uniform sampler2D texture1;
+
+void main()
+{{
+    outputColor = mix(texture(texture0, texCoord), texture(texture1, texCoord), 0.2);
+}}
+ ";
     }
 }

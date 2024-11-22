@@ -30,9 +30,7 @@ namespace WpfApp
              0.0f,  0.5f, 0.0f  // Top vertex
         };
 
-        // So we're going make the triangle pulsate between a color range.
-        // In order to do that, we'll need a constantly changing value.
-        // The stopwatch is perfect for this as it is constantly going up.
+      
         private Stopwatch _timer;
 
         private int _vertexBufferObject;
@@ -51,18 +49,13 @@ namespace WpfApp
             if (_shader!=null){
                 float greenValue = (float)Math.Sin(count)/2f+0.5f;
 
-                // This gets the uniform variable location from the frag shader so that we can 
-                // assign the new green value to it.
+               
                 int vertexColorLocation = GL.GetUniformLocation(_shader.Handle, "ourColor");
 
-                // Here we're assigning the ourColor variable in the frag shader 
-                // via the OpenGL Uniform method which takes in the value as the individual vec values (which total 4 in this instance).
+               
                 GL.Uniform4(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 
-                // You can alternatively use this overload of the same function.
-                // GL.Uniform4(vertexColorLocation, new OpenTK.Mathematics.Color4(0f, greenValue, 0f, 0f));
-
-                // Bind the VAO
+              
                 GL.BindVertexArray(_vertexArrayObject);
 
                 GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
@@ -92,7 +85,7 @@ namespace WpfApp
             GL.GetInteger(GetPName.MaxVertexAttribs, out int maxAttributeCount);
             Debug.WriteLine($"Maximum number of vertex attributes supported: {maxAttributeCount}");
 
-            _shader = new Shader("Shaders/shader4.vert", "Shaders/shader4.frag");
+            _shader = new Shader(vertMainShader, fragMainShader, 0);
             _shader.Use();
 
             timer.Start(); // 启动计时器
@@ -135,5 +128,31 @@ namespace WpfApp
             timer.Interval = TimeSpan.FromSeconds(1); // 设置间隔时间为1秒
             timer.Tick += Timer_Tick; // 订阅Tick事件
         }
+
+        public readonly static string vertMainShader = $@"
+#version 330 core
+
+layout(location = 0) in vec3 aPosition; 
+
+void main(void)
+{{
+	
+    gl_Position = vec4(aPosition, 1.0); 
+}}
+  ";
+
+
+        public readonly static string fragMainShader = $@"
+  #version 330 core
+
+out vec4 outputColor;
+
+uniform vec4 ourColor; 
+
+void main()
+{{
+    outputColor = ourColor;
+}}
+ ";
     }
 }

@@ -96,8 +96,8 @@ namespace WpfApp
             GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBufferObject);
             GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices, BufferUsageHint.StaticDraw);
 
-            _lightingShader = new Shader("Shaders/shader11.vert", "Shaders/lighting11.frag");
-            _lampShader = new Shader("Shaders/shader11.vert", "Shaders/shader11.frag");
+            _lightingShader = new Shader(vertMainShader, lightMainShader, 0);
+            _lampShader = new Shader(vertMainShader, fragMainShader, 0);
 
             {
                 _vaoModel = GL.GenVertexArray();
@@ -108,7 +108,7 @@ namespace WpfApp
                 // Remember to change the stride as we now have 6 floats per vertex
                 GL.VertexAttribPointer(positionLocation, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 0);
 
-                // We now need to define the layout of the normal so the shader can use it
+              
                 var normalLocation = _lightingShader.GetAttribLocation("aNormal");
                 GL.EnableVertexAttribArray(normalLocation);
                 GL.VertexAttribPointer(normalLocation, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
@@ -120,10 +120,7 @@ namespace WpfApp
 
                 var positionLocation = _lampShader.GetAttribLocation("aPos");
                 GL.EnableVertexAttribArray(positionLocation);
-                // Also change the stride here as we now have 6 floats per vertex. Now we don't define the normal for the lamp VAO
-                // this is because it isn't used, it might seem like a waste to use the same VBO if they dont have the same data
-                // The two cubes still use the same position, and since the position is already in the graphics memory it is actually
-                // better to do it this way. Look through the web version for a much better understanding of this.
+                
                 GL.VertexAttribPointer(positionLocation, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 0);
             }
 
@@ -179,14 +176,14 @@ namespace WpfApp
             {
                 float mouseX = (float)e.X;
                 float mouseY = (float)e.Y;
-                if (_firstMove) // This bool variable is initially set to true.
+                if (_firstMove) 
                 {
                     _lastPos = new Vector2(mouseX, mouseY);
                     _firstMove = false;
                 }
                 else
                 {
-                    // Calculate the offset of the mouse position
+                    
                     var deltaX = mouseX - _lastPos.X;
                     var deltaY = mouseY - _lastPos.Y;
                     _lastPos = new Vector2(mouseX, mouseY);
@@ -312,5 +309,72 @@ namespace WpfApp
             //timer.Interval = TimeSpan.FromSeconds(1); // 设置间隔时间为1秒
             //timer.Tick += Timer_Tick; // 订阅Tick事件
         }
+
+        public readonly static string vertMainShader = $@"
+#version 330 core
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 aNormal;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+out vec3 Normal;
+out vec3 FragPos;
+
+void main()
+{{
+    gl_Position = vec4(aPos, 1.0) * model * view * projection;
+    FragPos = vec3(vec4(aPos, 1.0) * model);
+    Normal = aNormal * mat3(transpose(inverse(model)));
+}}
+  ";
+
+
+        public readonly static string fragMainShader = $@"
+#version 330 core
+out vec4 FragColor;
+
+void main()
+{{
+    FragColor = vec4(1.0); 
+}}
+ ";
+
+        public readonly static string lightMainShader = $@"
+  #version 330 core
+out vec4 FragColor;
+uniform vec3 objectColor; 
+uniform vec3 lightColor;
+uniform vec3 lightPos; 
+uniform vec3 viewPos;
+
+in vec3 Normal; 
+in vec3 FragPos; 
+
+void main()
+{{
+    
+    float ambientStrength = 0.1;
+    vec3 ambient = ambientStrength * lightColor;
+   
+    vec3 norm = normalize(Normal);
+    vec3 lightDir = normalize(lightPos - FragPos);
+   
+    float diff = max(dot(norm, lightDir), 0.0); 
+    vec3 diffuse = diff * lightColor;
+   
+    float specularStrength = 0.5;
+    vec3 viewDir = normalize(viewPos - FragPos);
+    vec3 reflectDir = reflect(-lightDir, norm);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32); 
+    vec3 specular = specularStrength * spec * lightColor;  
+  
+    vec3 result = (ambient + diffuse + specular) * objectColor;
+    FragColor = vec4(result, 1.0);   
+  
+}}
+ ";
+
     }
 }

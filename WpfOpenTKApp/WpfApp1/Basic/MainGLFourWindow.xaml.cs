@@ -61,7 +61,7 @@ namespace WpfApp
             GL.EnableVertexAttribArray(0);
 
            
-            _shader = new Shader("Shaders/shader1.vert", "Shaders/shader1.frag");           
+            _shader = new Shader(vertMainShader, fragMainShader, 0);           
             _shader.Use();
 
             GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
@@ -100,5 +100,27 @@ namespace WpfApp
             // 指定这个GLControl作为chart控件的child
             chart.Child = optkGL;
         }
+        public readonly static string vertMainShader = $@"
+#version 330 core
+layout(location = 0) in vec3 aPosition;
+
+
+void main(void)
+{{
+    gl_Position = vec4(aPosition, 1.0);
+}}
+  ";
+
+
+        public readonly static string fragMainShader = $@"
+  #version 330
+
+out vec4 outputColor;
+
+void main()
+{{
+    outputColor = vec4(1.0, 1.0, 0.0, 1.0);
+}}
+ ";
     }
 }

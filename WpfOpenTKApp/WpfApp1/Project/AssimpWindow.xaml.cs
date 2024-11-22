@@ -180,7 +180,7 @@ namespace WpfApp
                         //We also upload data to the EBO the same way as we did with VBOs.
                         //GL.BufferData(BufferTarget.ElementArrayBuffer, _indices.Length * sizeof(uint), _indices, BufferUsageHint.StaticDraw);
 
-                        _shader = new Shader(Shader.vertShader, Shader.fragShader,0);
+                        _shader = new Shader(vertMainShader, fragMainShader, 0);
                         _shader.Use();
 
 
@@ -254,7 +254,7 @@ namespace WpfApp
                 GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
                 GL.BindVertexArray(_vertexArrayObject);
                 _camera = new Camera(Vector3.UnitZ * height, 1.2f);
-                _shader = new Shader(Shader.vertShader, Shader.fragShader,0);
+                _shader = new Shader(vertMainShader, fragMainShader, 0);
                 _shader.Use();
 
                 var model = ModelChange(coordinateAxis);
@@ -722,7 +722,7 @@ z:{vector.Z}
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);//解析顶点
             GL.EnableVertexAttribArray(0);
 
-            _shader = new Shader(Shader.vertShader, Shader.fragPickShader, 1);
+            _shader = new Shader(vertMainShader, fragPickShader, 1);
 
             GL.LineWidth(1.5f);
             _shader.SetMatrix4("model", Matrix4.Identity);
@@ -732,7 +732,7 @@ z:{vector.Z}
 
             lastPickPoint = vector;
             optkGL.SwapBuffers();
-            _shader = new Shader(Shader.vertShader, Shader.fragShader,1);
+            _shader = new Shader(vertMainShader,fragMainShader, 1);
         }
 
         private List<Vector3> AfterConversion(List<Vector3> vector3s)
@@ -868,5 +868,56 @@ void main()
         {
             Import();
         }
+
+        public readonly static string vertMainShader = $@"
+          #version 330 core
+
+layout(location = 0) in vec3 aPosition;
+
+//out vec3 texCoord;
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+void main(void)
+{{
+   //texCoord=aPosition;
+    gl_Position = vec4(aPosition, 1.0) * model * view * projection;
+}}
+         ";
+
+
+        public readonly static string fragMainShader = $@"
+#version 330
+out vec4 outputColor;
+//in vec3 texCoord;
+void main()
+{{
+     outputColor = vec4(1.0, 1.0, 0.0, 1.0);
+    //if(texCoord.z < 0.1)
+    //    outputColor = vec4(0.5, 0.0, 0.0, 1.0);
+    //else
+    //     if(texCoord.z<0.4)
+    //           outputColor = vec4(0.0, 1.0, 0.0, 1.0);
+    //      else 
+    //        outputColor = vec4(0.0, 0.0, 1.0, 1.0);
+}}
+         ";
+        public readonly static string fragPickShader = $@"
+#version 330
+out vec4 outputColor;
+//in vec3 texCoord;
+void main()
+{{
+     outputColor = vec4(1.0, 0.0, 1.0, 1.0);
+    //if(texCoord.z < 0.1)
+    //    outputColor = vec4(0.5, 0.0, 0.0, 1.0);
+    //else
+    //     if(texCoord.z<0.4)
+    //           outputColor = vec4(0.0, 1.0, 0.0, 1.0);
+    //      else 
+    //        outputColor = vec4(0.0, 0.0, 1.0, 1.0);
+}}
+         ";
     }
 }

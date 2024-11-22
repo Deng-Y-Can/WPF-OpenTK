@@ -97,8 +97,8 @@ namespace WpfApp
             GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBufferObject);
             GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices, BufferUsageHint.StaticDraw);
 
-            _lightingShader = new Shader("Shaders/shader12.vert", "Shaders/lighting12.frag");
-            _lampShader = new Shader("Shaders/shader12.vert", "Shaders/shader12.frag");
+            _lightingShader = new Shader(vertMainShader, lightMainShader, 0);
+            _lampShader = new Shader(vertMainShader, fragMainShader, 0);
 
             {
                 _vaoModel = GL.GenVertexArray();
@@ -156,9 +156,6 @@ namespace WpfApp
             }
 
         }
-
-
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -264,21 +261,20 @@ namespace WpfApp
 
                 _lightingShader.SetVector3("viewPos", _camera.Position);
 
-                // Here we set the material values of the cube, the material struct is just a container so to access
-                // the underlying values we simply type "material.value" to get the location of the uniform
+               
                 _lightingShader.SetVector3("material.ambient", new Vector3(1.0f, 0.5f, 0.31f));
                 _lightingShader.SetVector3("material.diffuse", new Vector3(1.0f, 0.5f, 0.31f));
                 _lightingShader.SetVector3("material.specular", new Vector3(0.5f, 0.5f, 0.5f));
                 _lightingShader.SetFloat("material.shininess", 32.0f);
 
-                // This is where we change the lights color over time using the sin function
+               
                 Vector3 lightColor;
                 float time = DateTime.Now.Second + DateTime.Now.Millisecond / 1000f;
                 lightColor.X = (MathF.Sin(time * 2.0f) + 1) / 2f;
                 lightColor.Y = (MathF.Sin(time * 0.7f) + 1) / 2f;
                 lightColor.Z = (MathF.Sin(time * 1.3f) + 1) / 2f;
 
-                // The ambient light is less intensive than the diffuse light in order to make it less dominant
+               
                 Vector3 ambientColor = lightColor * new Vector3(0.2f);
                 Vector3 diffuseColor = lightColor * new Vector3(0.5f);
 
@@ -327,5 +323,80 @@ namespace WpfApp
             //timer.Interval = TimeSpan.FromSeconds(1); // 设置间隔时间为1秒
             //timer.Tick += Timer_Tick; // 订阅Tick事件
         }
+
+        public readonly static string vertMainShader = $@"
+#version 330 core
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 aNormal;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+out vec3 Normal;
+out vec3 FragPos;
+
+void main()
+{{
+    gl_Position = vec4(aPos, 1.0) * model * view * projection;
+    FragPos = vec3(vec4(aPos, 1.0) * model);
+    Normal = aNormal * mat3(transpose(inverse(model)));
+}}
+  ";
+
+
+        public readonly static string fragMainShader = $@"
+  #version 330 core
+out vec4 FragColor;
+
+void main()
+{{
+    FragColor = vec4(1.0); 
+}}
+ ";
+
+        public readonly static string lightMainShader = $@"
+  #version 330 core
+
+struct Material {{
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+    float shininess; 
+}};
+
+struct Light {{
+    vec3 position;
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+}};
+
+uniform Light light;
+uniform Material material;
+uniform vec3 viewPos;
+out vec4 FragColor;
+in vec3 Normal;
+in vec3 FragPos;
+
+void main()
+{{
+    
+    vec3 ambient = light.ambient * material.ambient; 
+ 
+    vec3 norm = normalize(Normal);
+    vec3 lightDir = normalize(light.position - FragPos);
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 diffuse = light.diffuse * (diff * material.diffuse); 
+   
+    vec3 viewDir = normalize(viewPos - FragPos);
+    vec3 reflectDir = reflect(-lightDir, norm);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+    vec3 specular = light.specular * (spec * material.specular);
+    
+    vec3 result = ambient + diffuse + specular;
+    FragColor = vec4(result, 1.0);
+}}
+ ";
     }
 }

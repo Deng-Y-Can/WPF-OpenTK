@@ -64,20 +64,17 @@ namespace WpfApp
             -0.5f,  0.5f, -0.5f
         };
 
-        // This is the position of both the light and the place the lamp cube will be drawn in the scene
+       
         private readonly Vector3 _lightPos = new Vector3(1.2f, 1.0f, 2.0f);
 
         private int _vertexBufferObject;
 
-        // I renamed the vertex array object since we now want two VAO's one for the model (the big cube for testing light shaders),
-        // and one for the lamp so we can see where the light source comes from.
-        // In an actual application you would probably either not draw the lamp at all or draw it with a model of a lamp of some sort.
+      
         private int _vaoModel;
 
         private int _vaoLamp;
 
-        // We also need two shaders, one for the lamp and one for our lighting material.
-        // The lighting shader is where most of this chapter will take place as this is where a lot of the lighting "magic" happens.
+        
         private Shader _lampShader;
 
         private Shader _lightingShader;
@@ -103,14 +100,12 @@ namespace WpfApp
             GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBufferObject);
             GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices, BufferUsageHint.StaticDraw);
 
-            // Load the two different shaders, they use the same vertex shader program. However they have two different fragment shaders.
-            // This is because the lamp only uses a basic shader to turn it white, it wouldn't make sense to have the lamp lit in other colors.
-            // The lighting shaders uses the lighting.frag shader which is what a large part of this chapter will be about
-            _lightingShader = new Shader("Shaders/shader10.vert", "Shaders/lighting10.frag");
-            _lampShader = new Shader("Shaders/shader10.vert", "Shaders/shader10.frag");
+           
+            _lightingShader = new Shader(vertMainShader, lightMainShader, 0);
+            _lampShader = new Shader(vertMainShader, fragMainShader, 0);
 
             {
-                // Initialize the vao for the model
+                
                 _vaoModel = GL.GenVertexArray();
                 GL.BindVertexArray(_vaoModel);
 
@@ -120,11 +115,11 @@ namespace WpfApp
             }
 
             {
-                // Initialize the vao for the lamp, this is mostly the same as the code for the model cube
+                
                 _vaoLamp = GL.GenVertexArray();
                 GL.BindVertexArray(_vaoLamp);
 
-                // Set the vertex attributes (only position data for our lamp)
+                
                 var vertexLocation = _lampShader.GetAttribLocation("aPos");
                 GL.EnableVertexAttribArray(vertexLocation);
                 GL.VertexAttribPointer(vertexLocation, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
@@ -281,12 +276,12 @@ namespace WpfApp
 
                 GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
                 
-                // Draw the model/cube with the lighting shader
+               
                 GL.BindVertexArray(_vaoModel);
 
                 _lightingShader.Use();
 
-                // Matrix4.Identity is used as the matrix, since we just want to draw it at 0, 0, 0
+               
                 _lightingShader.SetMatrix4("model", Matrix4.Identity);
                 _lightingShader.SetMatrix4("view", _camera.GetViewMatrix());
                 _lightingShader.SetMatrix4("projection", _camera.GetProjectionMatrix());
@@ -296,7 +291,7 @@ namespace WpfApp
 
                 GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
 
-                // Draw the lamp, this is mostly the same as for the model cube
+                
                 GL.BindVertexArray(_vaoLamp);
 
                 _lampShader.Use();
@@ -314,5 +309,44 @@ namespace WpfApp
             }
 
         }
+
+        public readonly static string vertMainShader = $@"
+#version 330 core
+layout (location = 0) in vec3 aPos;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+void main()
+{{
+    gl_Position = vec4(aPos, 1.0) * model * view * projection;
+}}
+  ";
+
+
+        public readonly static string fragMainShader = $@"
+  #version 330 core
+out vec4 FragColor;
+
+void main()
+{{
+    FragColor = vec4(1.0); 
+}}
+ ";
+
+        public readonly static string lightMainShader = $@"
+  #version 330 core
+out vec4 FragColor;
+
+uniform vec3 objectColor;
+uniform vec3 lightColor;
+
+void main()
+{{
+    
+    FragColor = vec4(lightColor * objectColor, 1.0);
+}}
+ ";
     }
 }

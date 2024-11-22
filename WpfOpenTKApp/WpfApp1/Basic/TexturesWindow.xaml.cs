@@ -59,7 +59,7 @@ namespace WpfApp
             GL.BufferData(BufferTarget.ElementArrayBuffer, _indices.Length * sizeof(uint), _indices, BufferUsageHint.StaticDraw);
 
             // The shaders have been modified to include the texture coordinates, check them out after finishing the OnLoad function.
-            _shader = new Shader("Shaders/shader5.vert", "Shaders/shader5.frag");
+            _shader = new Shader(vertMainShader, fragMainShader, 0);
             _shader.Use();
 
             // Because there's now 5 floats between the start of the first vertex and the start of the second,
@@ -116,5 +116,41 @@ namespace WpfApp
             // 指定这个GLControl作为chart控件的child
             chart.Child = optkGL;
         }
+        public readonly static string vertMainShader = $@"
+#version 330 core
+
+layout(location = 0) in vec3 aPosition;
+
+layout(location = 1) in vec2 aTexCoord;
+
+
+out vec2 texCoord;
+
+void main(void)
+{{
+   
+    
+    texCoord = aTexCoord;
+
+    gl_Position = vec4(aPosition, 1.0);
+}}
+  ";
+
+
+        public readonly static string fragMainShader = $@"
+  #version 330
+
+out vec4 outputColor;
+
+in vec2 texCoord;
+
+uniform sampler2D texture0;
+
+void main()
+{{
+   
+    outputColor = texture(texture0, texCoord);
+}}
+ ";
     }
 }

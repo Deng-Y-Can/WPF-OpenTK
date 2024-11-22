@@ -46,24 +46,19 @@ namespace WpfApp
             _vertexArrayObject = GL.GenVertexArray();
             GL.BindVertexArray(_vertexArrayObject);
 
-            // Just like before, we create a pointer for the 3 position components of our vertices.
-            // The only difference here is that we need to account for the 3 color values in the stride variable.
-            // Therefore, the stride contains the size of 6 floats instead of 3.
+           
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 0);
             GL.EnableVertexAttribArray(0);
 
-            // We create a new pointer for the color values.
-            // Much like the previous pointer, we assign 6 in the stride value.
-            // We also need to correctly set the offset to get the color values.
-            // The color data starts after the position data, so the offset is the size of 3 floats.
+            
             GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
-            // We then enable color attribute (location=1) so it is available to the shader.
+          
             GL.EnableVertexAttribArray(1);
 
             GL.GetInteger(GetPName.MaxVertexAttribs, out int maxAttributeCount);
             Debug.WriteLine($"Maximum number of vertex attributes supported: {maxAttributeCount}");
 
-            _shader = new Shader("Shaders/shader3.vert", "Shaders/shader3.frag");
+            _shader = new Shader(vertMainShader, fragMainShader, 0);
             _shader.Use();
 
             GL.BindVertexArray(_vertexArrayObject);
@@ -103,5 +98,36 @@ namespace WpfApp
             // 指定这个GLControl作为chart控件的child
             chart.Child = optkGL;
         }
+        public readonly static string vertMainShader = $@"
+#version 330 core
+
+layout(location = 0) in vec3 aPosition;  
+
+layout(location = 1) in vec3 aColor;
+
+out vec3 ourColor; 
+
+void main(void)
+{{
+
+    gl_Position = vec4(aPosition, 1.0); 	
+	ourColor = aColor;
+}}
+  ";
+
+
+        public readonly static string fragMainShader = $@"
+  #version 330 core
+
+out vec4 outputColor;
+
+in vec3 ourColor;
+
+void main()
+{{
+    outputColor = vec4(ourColor, 1.0);
+}}
+ ";
+
     }
 }

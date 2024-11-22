@@ -60,8 +60,8 @@ namespace WpfApp
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
             GL.BufferData(BufferTarget.ElementArrayBuffer, _indices.Length * sizeof(uint), _indices, BufferUsageHint.StaticDraw);
 
-            // shader.frag has been modified yet again, take a look at it as well.
-            _shader = new Shader("Shaders/shader7.vert", "Shaders/shader7.frag");
+           
+            _shader = new Shader(vertMainShader, fragMainShader, 0);
             _shader.Use();
 
             var vertexLocation = _shader.GetAttribLocation("aPosition");
@@ -73,17 +73,15 @@ namespace WpfApp
             GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
 
             _texture = Texture.LoadFromFile("Resources/rsb.jpg");
-            // Texture units are explained in Texture.cs, at the Use function.
-            // First texture goes in texture unit 0.
+           
             _texture.Use(TextureUnit.Texture0);
 
-            // This is helpful because System.Drawing reads the pixels differently than OpenGL expects.
+          
             _texture2 = Texture.LoadFromFile("Resources/cww.jpg");
-            // Then, the second goes in texture unit 1.
+           
             _texture2.Use(TextureUnit.Texture1);
 
-            // Next, we must setup the samplers in the shaders to use the right textures.
-            // The int we send to the uniform indicates which texture unit the sampler should use.
+           
             _shader.SetInt("texture0", 0);
             _shader.SetInt("texture1", 1);
 
@@ -92,38 +90,22 @@ namespace WpfApp
             _texture.Use(TextureUnit.Texture0);
             _texture2.Use(TextureUnit.Texture1);
 
-            // Note: The matrices we'll use for transformations are all 4x4.
-
-            // We start with an identity matrix. This is just a simple matrix that doesn't move the vertices at all.
+           
             var transform = Matrix4.Identity;
 
-            // The next few steps just show how to use OpenTK's matrix functions, and aren't necessary for the transform matrix to actually work.
-            // If you want, you can just pass the identity matrix to the shader, though it won't affect the vertices at all.
-
-            // A fact to note about matrices is that the order of multiplications matter. "matrixA * matrixB" and "matrixB * matrixA" mean different things.
-            // A VERY important thing to know is that OpenTK matrices are so called row-major. We won't go into the full details here, but here is a good place to read more about it:
-            // https://www.scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/geometry/row-major-vs-column-major-vector
-            // What it means for us is that we can think of matrix multiplication as going left to right.
-            // So "rotate * translate" means rotate (around the origin) first and then translate, as opposed to "translate * rotate" which means translate and then rotate (around the origin).
-
-            // To combine two matrices, you multiply them. Here, we combine the transform matrix with another one created by OpenTK to rotate it by 20 degrees.
-            // Note that all Matrix4.CreateRotation functions take radians, not degrees. Use MathHelper.DegreesToRadians() to convert to radians, if you want to use degrees.
+           
             transform = transform * Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(25f));
 
-            // Next, we scale the matrix. This will make the rectangle slightly larger.
+           
             transform = transform * Matrix4.CreateScale(1.1f);
 
-            // Then, we translate the matrix, which will move it slightly towards the top-right.
-            // Note that we aren't using a full coordinate system yet, so the translation is in normalized device coordinates.
-            // The next tutorial will be about how to set one up so we can use more human-readable numbers.
             transform = transform * Matrix4.CreateTranslation(0.1f, 0.1f, 0.0f);
 
             _texture.Use(TextureUnit.Texture0);
             _texture2.Use(TextureUnit.Texture1);
             _shader.Use();
 
-            // Now that the matrix is finished, pass it to the vertex shader.
-            // Go over to shader.vert to see how we finally apply this to the vertices.
+           
             _shader.SetMatrix4("transform", transform);
 
 
@@ -162,5 +144,41 @@ namespace WpfApp
             // 指定这个GLControl作为chart控件的child
             chart.Child = optkGL;
         }
+        public readonly static string vertMainShader = $@"
+#version 330 core
+
+layout(location = 0) in vec3 aPosition;
+
+layout(location = 1) in vec2 aTexCoord;
+
+out vec2 texCoord;
+
+uniform mat4 transform;
+
+void main(void)
+{{
+    texCoord = aTexCoord;
+
+   
+    gl_Position = vec4(aPosition, 1.0) * transform;
+}}
+  ";
+
+
+        public readonly static string fragMainShader = $@"
+  #version 330
+
+out vec4 outputColor;
+
+in vec2 texCoord;
+
+uniform sampler2D texture0;
+uniform sampler2D texture1;
+
+void main()
+{{
+    outputColor = mix(texture(texture0, texCoord), texture(texture1, texCoord), 0.2);
+}}
+ ";
     }
 }
