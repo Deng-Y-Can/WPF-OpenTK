@@ -1,6 +1,5 @@
 ﻿
 
-FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\AssimpWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\EBOWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\GeometryWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\MainGLFourWindow.xaml;;
@@ -10,11 +9,12 @@ FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\MultipleTextures
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\TexturesWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\TransformationsWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\UniformsWindow.xaml;;
-FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\CameraWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\CoordinatesSystemsWindow.xaml;;
-FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\CubeWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Light\BasicLightWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Light\ColorWindow.xaml;;
-FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\MaterialsWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Project\AssimpWindowTwo.xaml;;
+FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\CameraWindow.xaml;;
+FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\CubeWindow.xaml;;
+FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Light\MaterialsWindow.xaml;;
+FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Project\AssimpWindow.xaml;;
 

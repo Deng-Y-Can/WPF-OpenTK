@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\basic\\cubewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\basic\\cubewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,11 +18,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CubeWindow.xaml.cs",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Basic\\CubeWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\Basic\\CubeWindow.xaml.cs",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Basic\\CubeWindow.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\Basic\\CubeWindow.xaml.cs",
+              "ViewState": "AgIAAO4AAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T14:34:32.272Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
