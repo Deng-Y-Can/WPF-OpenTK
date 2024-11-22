@@ -317,3 +317,7 @@ E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-window
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\Light\BasicLightWindow.baml
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\Light\ColorWindow.baml
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\MaterialsWindow.baml
+E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\Project\AssimpWindowTwo.g.cs
+E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\Project\AssimpWindowTwo.baml
+E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\Basic\GeometryWindow.g.cs
+E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\Basic\GeometryWindow.baml

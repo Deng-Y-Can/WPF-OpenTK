@@ -3,14 +3,6 @@
   "WorkspaceRootPath": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\materialswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\materialswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\materialswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\materialswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
@@ -31,31 +23,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MaterialsWindow.xaml.cs",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\MaterialsWindow.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\MaterialsWindow.xaml.cs",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\MaterialsWindow.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\MaterialsWindow.xaml.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAEwBsBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-17T10:02:33.997Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MaterialsWindow.xaml",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\MaterialsWindow.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\MaterialsWindow.xaml",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\MaterialsWindow.xaml",
-              "RelativeToolTip": "WpfApp1\\MaterialsWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-17T10:02:00.856Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "App.xaml",
               "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\App.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\App.xaml",

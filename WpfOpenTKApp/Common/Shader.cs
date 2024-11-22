@@ -233,6 +233,112 @@ namespace LearnOpenTK.Common
             }
         }
 
+        public Shader(string vert, string geometry, string frag, int id)
+        {
+            var shaderSource = vert;
+
+            var vertexShader = GL.CreateShader(ShaderType.VertexShader);
+            GL.ShaderSource(vertexShader, shaderSource);
+            CompileShader(vertexShader);
+
+            shaderSource = geometry;
+            var geometryShader = GL.CreateShader(ShaderType.GeometryShader);
+            GL.ShaderSource(geometryShader, shaderSource);
+            CompileShader(geometryShader);
+
+            shaderSource = frag;
+            var fragmentShader = GL.CreateShader(ShaderType.FragmentShader);
+            GL.ShaderSource(fragmentShader, shaderSource);
+            CompileShader(fragmentShader);
+
+            Handle = GL.CreateProgram();
+
+            // Attach both shaders...
+            GL.AttachShader(Handle, vertexShader);
+            GL.AttachShader(Handle, geometryShader);
+            GL.AttachShader(Handle, fragmentShader);
+
+            // And then link them together.
+            LinkProgram(Handle);
+
+            GL.DetachShader(Handle, vertexShader);
+            GL.DetachShader(Handle, geometryShader);
+            GL.DetachShader(Handle, fragmentShader);
+            GL.DeleteShader(vertexShader);
+            GL.DeleteShader(fragmentShader);
+            GL.DeleteShader(geometryShader);
+
+
+            GL.GetProgram(Handle, GetProgramParameterName.ActiveUniforms, out var numberOfUniforms);
+            _uniformLocations = new Dictionary<string, int>();
+
+            // Loop over all the uniforms,
+            for (var i = 0; i < numberOfUniforms; i++)
+            {
+                // get the name of this uniform,
+                var key = GL.GetActiveUniform(Handle, i, out _, out _);
+
+                // get the location,
+                var location = GL.GetUniformLocation(Handle, key);
+
+                // and then add it to the dictionary.
+                _uniformLocations.Add(key, location);
+            }
+        }
+
+        public Shader(string shader, int name)
+        {
+            var shaderSource = shader;
+
+            int geometryShader = 0;
+            switch (name)
+            {
+                case 0:
+                    geometryShader = GL.CreateShader(ShaderType.GeometryShader);
+                    break;
+                case 1:
+                    geometryShader = GL.CreateShader(ShaderType.VertexShader);
+                    break;
+                case 2:
+                    geometryShader = GL.CreateShader(ShaderType.FragmentShader);
+                    break;
+                default:
+                    geometryShader = GL.CreateShader(ShaderType.GeometryShader);
+                    break;
+            }
+
+            GL.ShaderSource(geometryShader, shaderSource);
+
+            CompileShader(geometryShader);
+
+            Handle = GL.CreateProgram();
+
+            // Attach both shaders...
+            GL.AttachShader(Handle, geometryShader);
+
+            // And then link them together.
+            LinkProgram(Handle);
+
+            GL.DetachShader(Handle, geometryShader);
+
+            GL.DeleteShader(geometryShader);
+
+            GL.GetProgram(Handle, GetProgramParameterName.ActiveUniforms, out var numberOfUniforms);
+            _uniformLocations = new Dictionary<string, int>();
+
+            // Loop over all the uniforms,
+            for (var i = 0; i < numberOfUniforms; i++)
+            {
+                // get the name of this uniform,
+                var key = GL.GetActiveUniform(Handle, i, out _, out _);
+
+                // get the location,
+                var location = GL.GetUniformLocation(Handle, key);
+
+                // and then add it to the dictionary.
+                _uniformLocations.Add(key, location);
+            }
+        }
 
         public readonly static string vertShader = $@"
           #version 330 core

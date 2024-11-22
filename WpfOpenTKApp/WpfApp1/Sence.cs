@@ -102,14 +102,14 @@ namespace WpfApp
 
     }
 
-    public class Color
+    public class Color3D
     {
         public float R;
         public float G;
         public float B;
         public float A;
 
-        public Color(float r, float g, float b, float a)
+        public Color3D(float r, float g, float b, float a)
         {
             this.R = r;
             this.G = g;
@@ -121,7 +121,7 @@ namespace WpfApp
             return $@"{R.ToString()},{G.ToString()},{B.ToString()},{A.ToString()}";
         }
     }
-    public class Tool()
+    public class Tool2()
     {
         public static float[] Vector3iToIntArray(List<Vector3D> vectorList)
         {

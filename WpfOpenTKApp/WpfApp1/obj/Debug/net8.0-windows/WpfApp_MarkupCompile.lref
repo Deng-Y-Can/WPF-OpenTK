@@ -2,6 +2,7 @@
 
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\AssimpWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\EBOWindow.xaml;;
+FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\GeometryWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\MainGLFourWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\MainGLWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Basic\MoreAttributesWindow.xaml;;
@@ -15,4 +16,5 @@ FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\CubeWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Light\BasicLightWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Light\ColorWindow.xaml;;
 FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\MaterialsWindow.xaml;;
+FE:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Project\AssimpWindowTwo.xaml;;
 

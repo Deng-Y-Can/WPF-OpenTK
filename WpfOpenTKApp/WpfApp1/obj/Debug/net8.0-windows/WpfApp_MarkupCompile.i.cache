@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\App.xaml
-15-1182503497
+171875489924
 
-211966633443
+24478975241
 243651431933
-AssimpWindow.xaml;Basic\EBOWindow.xaml;Basic\MainGLFourWindow.xaml;Basic\MainGLWindow.xaml;Basic\MoreAttributesWindow.xaml;Basic\MultipleTexturesWindow.xaml;Basic\TexturesWindow.xaml;Basic\TransformationsWindow.xaml;Basic\UniformsWindow.xaml;CameraWindow.xaml;CoordinatesSystemsWindow.xaml;CubeWindow.xaml;Light\BasicLightWindow.xaml;Light\ColorWindow.xaml;MaterialsWindow.xaml;
+AssimpWindow.xaml;Basic\EBOWindow.xaml;Basic\GeometryWindow.xaml;Basic\MainGLFourWindow.xaml;Basic\MainGLWindow.xaml;Basic\MoreAttributesWindow.xaml;Basic\MultipleTexturesWindow.xaml;Basic\TexturesWindow.xaml;Basic\TransformationsWindow.xaml;Basic\UniformsWindow.xaml;CameraWindow.xaml;CoordinatesSystemsWindow.xaml;CubeWindow.xaml;Light\BasicLightWindow.xaml;Light\ColorWindow.xaml;MaterialsWindow.xaml;Project\AssimpWindowTwo.xaml;
 
 False
 
