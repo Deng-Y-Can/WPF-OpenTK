@@ -7,12 +7,20 @@
       "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFCD67F5-848C-4E0E-9380-812118240BA1}|Common\\Common.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\common\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFCD67F5-848C-4E0E-9380-812118240BA1}|Common\\Common.csproj|solutionrelative:common\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\light\\basiclightwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\light\\basiclightwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\coordinatessystemswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\coordinatessystemswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\light\\colorwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\light\\colorwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\basic\\cubewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\basic\\cubewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\basic\\multipletextureswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\basic\\multipletextureswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,28 +38,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CoordinatesSystemsWindow.xaml.cs",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\CoordinatesSystemsWindow.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\CoordinatesSystemsWindow.xaml.cs",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\CoordinatesSystemsWindow.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\CoordinatesSystemsWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "CubeWindow.xaml.cs",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Basic\\CubeWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\Basic\\CubeWindow.xaml.cs",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Basic\\CubeWindow.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\Basic\\CubeWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T15:31:11.172Z",
+              "WhenOpened": "2024-11-23T02:41:39.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MultipleTexturesWindow.xaml.cs",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Basic\\MultipleTexturesWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\Basic\\MultipleTexturesWindow.xaml.cs",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Basic\\MultipleTexturesWindow.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\Basic\\MultipleTexturesWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T02:40:57.255Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Shader.cs",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Shader.cs",
-              "RelativeDocumentMoniker": "Common\\Shader.cs",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Shader.cs",
-              "RelativeToolTip": "Common\\Shader.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAqwDQAAAAAAAAAAAAAAA==",
+              "Title": "BasicLightWindow.xaml.cs",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Light\\BasicLightWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\Light\\BasicLightWindow.xaml.cs",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Light\\BasicLightWindow.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\Light\\BasicLightWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T15:29:16.642Z",
+              "WhenOpened": "2024-11-23T02:38:49.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ColorWindow.xaml.cs",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Light\\ColorWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\Light\\ColorWindow.xaml.cs",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Light\\ColorWindow.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\Light\\ColorWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T02:38:44.917Z",
               "EditorCaption": ""
             },
             {

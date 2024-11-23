@@ -251,7 +251,7 @@ namespace WpfApp
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             //string filePath = Tool.SelectFile();
-            string filePath = "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Model\\candy.ply";
+            string filePath = "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Model\\dragonBk5_0.ply";
             Import(filePath);
             Render();
         }
