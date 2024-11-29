@@ -9,7 +9,6 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace WpfApp
 {
-   
     public class Tool()
     {
         public static float[] Vector3iToIntArray(List<Vector3D> vectorList)
@@ -105,6 +104,8 @@ namespace WpfApp
             }
             return null; // 用户没有选择文件或者点击了取消
         }
+
+        public static float unReach = -999999;
         /// <summary>
         /// 查看点是否在点集合中，或者附近
         /// </summary>
@@ -128,11 +129,11 @@ namespace WpfApp
                 }
 
             }
-            if (mindistance < 0.05)//兼容误差
+            if (mindistance < 5)//兼容误差
             {
                 return near;
             }
-            return new Vector3D(-99999, -9999, -99999);
+            return new Vector3D(unReach, unReach, unReach);
         }
         /// <summary>
         /// 计算两点之间的距离
@@ -180,7 +181,7 @@ namespace WpfApp
         /// <returns></returns>
         public static Bitmap GenerateBitmapFromString(string text, string fontFilePath, float fontSize, System.Drawing.Color textColor)
         {
-            text += "。";//最后一个字不显示，暂处理
+            //text += "。";//最后一个字不显示，暂处理
             // 创建一个新的Bitmap，初始大小设为1x1像素
             Bitmap bitmap = new Bitmap(1, 1);
             Graphics graphics = Graphics.FromImage(bitmap);
@@ -203,8 +204,15 @@ namespace WpfApp
 
                 // 设置文字格式（例如居中对齐）
                 StringFormat format = new StringFormat();
-                format.Alignment = StringAlignment.Center;
+                format.Alignment = StringAlignment.Near;
                 format.LineAlignment = StringAlignment.Center;
+                format.Trimming = StringTrimming.None;
+                format.FormatFlags = StringFormatFlags.NoWrap;
+
+                //Brush redBrush = new SolidBrush(System.Drawing.Color.Red);
+                //Brush greenBrush = new SolidBrush(System.Drawing.Color.Green);
+                //graphics.DrawString("Hello, Red!", new Font(FontFamily.GenericSerif, 12), redBrush, new RectangleF(0, 0, width, height), format);
+                //graphics.DrawString("Hello, Green!", new Font(FontFamily.GenericSerif, 12), greenBrush, new RectangleF(0, height, width, height), format);
 
                 // 使用Graphics对象来填充背景颜色
                 graphics.FillRectangle(new SolidBrush(System.Drawing.Color.Orange), 0, 0, width, height);
@@ -220,5 +228,76 @@ namespace WpfApp
 
             return bitmap;
         }
+        /// <summary>
+        /// 取两点的中点
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
+        public static Vector3 CalculateMidpoint(Vector3 A, Vector3 B)
+        {
+            float midX = (A.X + B.X) / 2;
+            float midY = (A.Y + B.Y) / 2;
+            float midZ = (A.Z + B.Z) / 2;
+            return new Vector3(midX, midY, midZ);
+        }
+        /// <summary>
+        /// 判断点的值是否全等于一个值
+        /// </summary>
+        /// <param name="vector"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool IsZero(Vector3 vector, float value)
+        {
+            bool result = false;
+            if (vector.X == value && vector.Y == value && vector.Z == value)
+            {
+                return true;
+            }
+            return result;
+        }
+        /// <summary>
+        /// 当视角无限接近于1和90度时，减小步进值的量纲，以达到无线接近的目的
+        /// </summary>
+        /// <param name="change"></param>
+        /// <param name="fov"></param>
+        /// <returns></returns>
+        public float FovChange(int change, float fov)
+        {
+            float variation = change > 0 ? fov - 1 : 90 - fov;
+            float fovSacle = 1;
+            int dimension = (int)Math.Floor(Math.Log10(Math.Abs(variation)));
+            fovSacle = (float)Math.Pow(10, 3 - dimension);
+            return fovSacle;
+        }
+        /// <summary>
+        /// 自变量于因变量的关系属于分段函数
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public float SacleFuction(float x)
+        {
+            float y = 1;
+            if (x > 0)
+            {
+                y = 1 + x;
+            }
+            else if (x < 0)
+            {
+                y = (x + 1) / x;
+            }
+            else
+            {
+                return 1;
+            }
+            return y;
+        }
+
+        public static float SquareRootSum(float Xa, float Xb, float Ya, float Yb)
+        {
+            float sumOfSquares = (Xa - Ya) * (Xa - Ya) + (Xb - Yb) * (Xb - Yb);
+            return (float)Math.Sqrt(sumOfSquares);
+        }
+
     }
 }

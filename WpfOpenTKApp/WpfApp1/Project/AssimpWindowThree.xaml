@@ -1,0 +1,48 @@
+﻿<Window x:Class="WpfApp.AssimpWindowThree"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="AssimpWindowThree" Height="600" Width="1000" Loaded="Window_Loaded_1" SizeChanged="Window_SizeChanged_1">
+    <Grid Name="grid">
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="807"/>
+
+            <ColumnDefinition/>
+
+
+        </Grid.ColumnDefinitions>
+        <WindowsFormsHost   Grid.Column="0" Width="700" Height="500"  Name="chart" HorizontalAlignment="Left" Margin="67,36,0,49" />
+        <Button Grid.Column="1" Content="导入模型" HorizontalAlignment="Left" Margin="31,19,0,0" VerticalAlignment="Top" Width="95" Height="20" Click="Button_Click_1"/>
+        <Button Grid.Column="1" Content="正视图" HorizontalAlignment="Left" Margin="31,44,0,0" VerticalAlignment="Top" Height="19" Width="95" Click="Button_Click_3"/>
+        <Button Grid.Column="1" Content="后视图" HorizontalAlignment="Left" Margin="31,68,0,0" VerticalAlignment="Top" Width="94" Height="23" Click="Button_Click_4"/>
+        <Button Grid.Column="1" Content="左视图" HorizontalAlignment="Left" Margin="31,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.532,-0.958" Height="20" Width="95" Click="Button_Click"/>
+        <Button Grid.Column="1" Content="右视图" HorizontalAlignment="Left" Margin="31,121,0,0" VerticalAlignment="Top" Height="18" Width="95" Click="Button_Click_2"/>
+        <Button Grid.Column="1" Content="俯视图" HorizontalAlignment="Left" Margin="31,144,0,0" VerticalAlignment="Top" Height="17" Width="95" Click="Button_Click_5"/>
+        <Button Grid.Column="1" Content="仰视图" HorizontalAlignment="Left" Margin="31,172,0,0" VerticalAlignment="Top" Height="17" Width="95" Click="Button_Click_6"/>
+        <Button Grid.Column="1" Content="放大" HorizontalAlignment="Left" Margin="31,194,0,0" VerticalAlignment="Top" Height="24" Width="94" Click="Button_Click_7"/>
+        <Button Grid.Column="1" Content="缩小" HorizontalAlignment="Left" Margin="32,223,0,0" VerticalAlignment="Top" Height="18" Width="94" Click="Button_Click_8"/>
+        <Button Grid.Column="1" Content="X轴旋转" HorizontalAlignment="Left" Margin="31,246,0,0" VerticalAlignment="Top" Height="17" Width="94" Click="Button_Click_9"/>
+        <Button Grid.Column="1" Content="Y轴旋转" HorizontalAlignment="Left" Margin="31,268,0,0" VerticalAlignment="Top" Height="18" Width="96" Click="Button_Click_10"/>
+        <Button Grid.Column="1" Name="getPoint" Content="未取点模式" HorizontalAlignment="Left" Margin="30,338,0,0" VerticalAlignment="Top" Height="18" Width="96" Click="getPoint_Click"/>
+        <Label Grid.Column="1" Name="label" Content="Label" HorizontalAlignment="Left" Margin="25,420,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="131" Height="142">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.859"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Button Grid.Column="1" Content="X轴着色" HorizontalAlignment="Left" Margin="30,291,0,0" VerticalAlignment="Top" Width="95" Height="18" Click="Button_Click_12"/>
+        <Button Grid.Column="1" Content="Y轴着色" HorizontalAlignment="Left" Margin="30,314,0,0" VerticalAlignment="Top" Height="19" Width="94" Click="Button_Click_13"/>
+        <Button Grid.Column="1" Name="PointName" Content="单点" HorizontalAlignment="Left" Margin="30,361,0,0" VerticalAlignment="Top" Width="94" Height="20" Click="Button_Click_16"/>
+        <Button Grid.Column="1" Content="更改原点" HorizontalAlignment="Left" Margin="32,386,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click_17" Height="19"/>
+
+
+    </Grid>
+</Window>

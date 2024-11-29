@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfApp.ParameterDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="参数输入" Height="200" Width="200">
+    <Grid Margin="0,0,0,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBlock Text="X坐标：" Height="20" Margin="5"/>
+            <TextBox x:Name="paramX" Height="20" Margin="5" Width="80"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBlock Text="Y坐标：" Height="20" Margin="5"/>
+            <TextBox x:Name="paramY" Height="20" Margin="5" Width="79"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBlock Text="Z坐标：" Height="20" Margin="5"/>
+            <TextBox x:Name="paramZ" Height="20" Margin="5" Width="77"/>
+        </StackPanel>
+        <Button x:Name="okButton" Content="确定" Width="75" Height="23"  Click="OkButton_Click" Margin="58,51,67,-44" Grid.Row="2"/>
+    </Grid>
+
+</Window>

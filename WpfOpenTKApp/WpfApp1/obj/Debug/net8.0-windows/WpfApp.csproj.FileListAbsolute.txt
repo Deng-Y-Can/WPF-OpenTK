@@ -321,3 +321,7 @@ E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-window
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\Basic\CubeWindow.baml
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\Light\MaterialsWindow.baml
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\Project\AssimpWindow.baml
+E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\Project\AssimpWindowThree.g.cs
+E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\UseWindow\ParameterDialog.g.cs
+E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\Project\AssimpWindowThree.baml
+E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\UseWindow\ParameterDialog.baml

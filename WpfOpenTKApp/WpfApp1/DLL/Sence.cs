@@ -4,112 +4,298 @@ using LearnOpenTK.Common;
 using OpenTK.GLControl;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
-
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
+using PrimitiveType = OpenTK.Graphics.OpenGL4.PrimitiveType;
 
 namespace WpfApp
 {
-    public class Scene
+    public class SceneT
     {
-    }
-
-    public class Model
-    {
-        public Model(string path)
-        {
-            LoadModel(path);
-        }
-
-        public void Draw(Shader shader)
-        {
-            for (int i = 0; i < meshes.Count(); i++)
-            {
-               // meshes[i].Draw(shader);
-            }
-        }
-
-        private void LoadModel(string path)
-        {
-            var importer = new AssimpContext();
-            var scene = importer.ImportFile($@"{path}", PostProcessSteps.None);
-        }
-        private List<Mesh> meshes;
-        private string directory;
-        private void ProcessNode()
-        {
-        }
-        private Mesh ProcessMesh()
-        {
-            return new Mesh();
-        }
-
-        private List<TextureA> loadMaterialTextures()
-        {
-            return null;
-        }
     }
 
     //顶点
-    public struct Vertex
+    public struct VertexT
     {
-        Vector3i Position;//位置
-        Vector3i Normal;//法向量
-        Vector3i TexCoords;//纹理坐标
+        public Vector3 Position;//位置
+        public Vector3 Normal;//法向量
+        public Vector2 TexCoords;//纹理坐标
     };
 
     //纹理
-    public struct TextureA
+    public struct TextureT
     {
-        int id;
-        string type;
+        public int id;
+        public string type;
+        public TextureSlot slot;
     };
 
-    //网格
-    public class Mesh2()
+    public class ModelT
     {
-        public List<Vertex> _vertices;
-        public List<int> _indices;
-        public List<TextureA> _textures;
-
-        private GLControl glc;
-
-        public Mesh2(List<Vertex> verticeL, List<int> indiceL, List<TextureA> textureL) : this()
+        public ModelT(string path)
         {
-            this._vertices = verticeL;
-            this._indices = indiceL;
-            this._textures = textureL;
-            SetupMesh();
+            LoadModel(path);
         }
         public void Draw(Shader shader)
         {
+            for (int i = 0; i < meshTs.Count; i++)
+            {
+                meshTs[i].Draw(shader);
+            }
+        }
+        private List<MeshT> meshTs = new List<MeshT>();
+        private string directory;
+        private List<TextureT> textureTsLoad = new List<TextureT>();
+        private void LoadModel(string path)
+        {
+            AssimpContext importer = new AssimpContext();
+            Scene scene = importer.ImportFile(path, PostProcessSteps.Triangulate | PostProcessSteps.FlipUVs);
+            if (scene == null || scene.RootNode == null)
+            {
+                MessageBox.Show("Load failure!");
+                return;
+            }
+            directory = Directory.GetParent(path).FullName;
+            ProcessNode(scene.RootNode, scene);
+        }
+        private void ProcessNode(Node node, Scene scene)
+        {
+            for (int i = 0; i < node.MeshCount; i++)
+            {
+                Mesh mesh = (Mesh)scene.Meshes[node.MeshIndices[i]];
+                meshTs.Add(ProcessMesh(mesh, scene));
+            }
+            for (int i = 0; i < node.ChildCount; i++)
+            {
+                ProcessNode(node.Children[i], scene);
+            }
+        }
+        private MeshT ProcessMesh(Mesh mesh, Scene scene)
+        {
+            List<VertexT> vertexTs = new List<VertexT>();
+            List<int> indices = new List<int>();
+            List<TextureT> textureTs = new List<TextureT>();
+            for (int i = 0; i < mesh.Vertices.Count; i++)
+            {
+                VertexT vertexT = new VertexT();
+                vertexT.Position.X = mesh.Vertices[i].X;
+                vertexT.Position.X = mesh.Vertices[i].Y;
+                vertexT.Position.Z = mesh.Vertices[i].Z;
+                if (mesh.HasNormals)
+                {
+                    vertexT.Normal.X = mesh.Normals[i].X;
+                    vertexT.Normal.Y = mesh.Normals[i].Y;
+                    vertexT.Normal.Z = mesh.Normals[i].Z;
+                }
+
+                if (mesh.HasTextureCoords(0))
+                {
+                    vertexT.TexCoords.X = mesh.TextureCoordinateChannels[0][i].X;
+                    vertexT.TexCoords.Y = mesh.TextureCoordinateChannels[0][i].Y;
+
+                }
+                else
+                {
+                    vertexT.TexCoords = new Vector2(0f, 0f);
+                }
+                vertexTs.Add(vertexT);
+            }
+            for (int i = 0; i < mesh.FaceCount; i++)
+            {
+                Face face = mesh.Faces[i];
+                for (int j = 0; j < face.IndexCount; j++)
+                {
+                    indices.Add(face.Indices[j]);
+                }
+            }
+
+            if (mesh.MaterialIndex >= 0)
+            {
+                Material material = scene.Materials[mesh.MaterialIndex];
+                List<TextureT> diffuseMaps = LoadMaterialTextures(material, TextureType.Diffuse, "texture_diffuse");
+                foreach (var item in diffuseMaps)
+                {
+                    textureTs.Add(item);
+                }
+                List<TextureT> specularMaps = LoadMaterialTextures(material, TextureType.Specular, "texture_specular");
+                foreach (var item in specularMaps)
+                {
+                    textureTs.Add(item);
+                }
+            }
+            return new MeshT(vertexTs, indices, textureTs);
+        }
+        private List<TextureT> LoadMaterialTextures(Material material, TextureType textureType, string typeName)
+        {
+            List<TextureT> textureTs = new List<TextureT>();
+            for (int i = 0; i < material.GetMaterialTextureCount(textureType); i++)
+            {
+                TextureSlot str;
+                material.GetMaterialTexture(textureType, i, out str);
+                TextureT textureT = new TextureT();
+                textureT.id = str.TextureIndex;
+                textureT.type = typeName;
+                textureT.slot = str;
+                textureTs.Add(textureT);
+                //bool skip = false;
+                //for(int j = 0; j < textureTsLoad.Count; j++)
+                //{
+                //    if (textureTsLoad[j].slot.FilePath == str.FilePath)
+                //    {
+                //        textureTs.Add(textureTsLoad[j]);
+                //        skip = true;
+                //        break;
+                //    }
+                //}
+                //if (!skip)
+                //{
+
+                //}
+
+            }
+            return textureTs;
+
+        }
+    }
+    public class MeshT
+    {
+        public List<VertexT> _vertexTs;
+        public List<int> _indices;
+        public List<TextureT> _textureTs;
+        public float[] _vertexTList;
+        public int[] _indicesTList;
+
+        public MeshT(List<VertexT> vertexTs, List<int> indices, List<TextureT> textureTs)
+        {
+            this._vertexTs = vertexTs;
+            this._indices = indices;
+            this._textureTs = textureTs;
+            _indicesTList = _indices.ToArray();
+            _vertexTList = VertexTsToArray(_vertexTs);
+            SetupMesh();
         }
 
-        private int _vertexArrayObject;
-        private int _vertexBufferObject;
-        private int EBO;
+        public float[] VertexTsToArray(List<VertexT> vertexTs)
+        {
+            float[] vertexTList = new float[vertexTs.Count() * 8];
+            int index = 0;
+            for (int i = 0; i < vertexTs.Count; i++)
+            {
+                vertexTList[index] = vertexTs[i].Position.X;
+                index++;
+                vertexTList[index] = vertexTs[i].Position.Y;
+                index++;
+                vertexTList[index] = vertexTs[i].Position.Z;
+                index++;
+                vertexTList[index] = vertexTs[i].Normal.X;
+                index++;
+                vertexTList[index] = vertexTs[i].Normal.Y;
+                index++;
+                vertexTList[index] = vertexTs[i].Normal.Z;
+                index++;
+                vertexTList[index] = vertexTs[i].TexCoords.X;
+                index++;
+                vertexTList[index] = vertexTs[i].TexCoords.Y;
+                index++;
+            }
+            return vertexTList;
+
+        }
+        public void Draw(Shader shader)
+        {
+            uint diffuerNr = 1;
+            uint specularNr = 1;
+            for (int i = 0; i < _textureTs.Count; i++)
+            {
+                GL.ActiveTexture(TextureUnit.Texture0 + i);
+                string number;
+                string name = _textureTs[i].type;
+                if (name == "texture_diffuse")
+                {
+                    number = diffuerNr++.ToString();
+                }
+                else
+                {
+                    number = specularNr++.ToString();
+                }
+                shader.SetInt("material_" + name + number, i);
+                GL.BindTexture(TextureTarget.Texture2D, _textureTs[i].id);
+            }
+            SetupMesh();
+            GL.ActiveTexture(TextureUnit.Texture0);
+            GL.BindVertexArray(VAO);
+            GL.DrawElements(PrimitiveType.Triangles, _indices.Count, DrawElementsType.UnsignedInt, 0);
+
+        }
+
+        private int VAO, VBO, EBO;
         private void SetupMesh()
         {
-            _vertexBufferObject = GL.GenBuffer();
-            GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBufferObject);
-            //GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Count() * sizeof(float), _vertices[], BufferUsageHint.StaticDraw);
+            VBO = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
+            GL.BufferData(BufferTarget.ArrayBuffer, _vertexTList.Length * sizeof(float), _vertexTList, BufferUsageHint.StaticDraw);
 
-            _vertexArrayObject = GL.GenVertexArray();
-            GL.BindVertexArray(_vertexArrayObject);
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);//解析顶点
+            VAO = GL.GenVertexArray();
+            GL.BindVertexArray(VAO);
+
+            EBO = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, _indices.Count * sizeof(uint), _indices.ToArray(), BufferUsageHint.StaticDraw);
+
+
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);//顶点位置
             GL.EnableVertexAttribArray(0);
+
+            GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 3);//顶点法线
+            GL.EnableVertexAttribArray(1);
+
+            GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 6);//顶点纹理坐标
+            GL.EnableVertexAttribArray(2);
+
         }
 
 
     }
 
-    public class Color3D
+    //-------------------------------------------------------------工具类---------------------------------------
+    public class VertexList
+    {
+        public VertexList(List<Vector3D> vector3Ds)
+        {
+            _vector3s = vector3Ds;
+            _vertices = Tool.Vector3iToIntArray(_vector3s);
+            _maxX = _vector3s.Max(v => v.X);
+            _minX = _vector3s.Min(v => v.X);
+            _maxY = _vector3s.Max(v => v.Y);
+            _minY = _vector3s.Min(v => v.Y);
+            _maxZ = _vector3s.Max(v => v.Z);
+            _minZ = _vector3s.Min(v => v.Z);
+            _verticeMax = _vertices.Max();
+            _verticeMin = _vertices.Min();
+            _count = _vector3s.Count();
+        }
+        public float[] _vertices;
+        public List<Vector3D> _vector3s;
+        public float _maxX;
+        public float _minX;
+        public float _maxY;
+        public float _minY;
+        public float _maxZ;
+        public float _minZ;
+        public float _verticeMax;
+        public float _verticeMin;
+        public int _count;
+    }
+
+
+    public class ColorT
     {
         public float R;
         public float G;
         public float B;
         public float A;
 
-        public Color3D(float r, float g, float b, float a)
+        public ColorT(float r, float g, float b, float a)
         {
             this.R = r;
             this.G = g;
