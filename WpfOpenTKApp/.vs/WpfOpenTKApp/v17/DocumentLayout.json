@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\tools\\vlc\\vlcplayerwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\tools\\vlc\\vlcplayerwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\project\\assimpwindowthree.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\project\\assimpwindowthree.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\tools\\vlc\\vlcplayerwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\tools\\vlc\\vlcplayerwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\project\\assimpwindowthree.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\project\\assimpwindowthree.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\dll\\tool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\dll\\tool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFCD67F5-848C-4E0E-9380-812118240BA1}|Common\\Common.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\common\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFCD67F5-848C-4E0E-9380-812118240BA1}|Common\\Common.csproj|solutionrelative:common\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\dll\\sence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\dll\\sence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,27 +38,66 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Sence.cs",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\DLL\\Sence.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\DLL\\Sence.cs",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\DLL\\Sence.cs",
+              "RelativeToolTip": "WpfApp1\\DLL\\Sence.cs",
+              "ViewState": "AgIAAAgBAAAAAAAAAAAIwBcBAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T15:37:07.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Tool.cs",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\DLL\\Tool.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\DLL\\Tool.cs",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\DLL\\Tool.cs",
+              "RelativeToolTip": "WpfApp1\\DLL\\Tool.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAswL0BAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T15:31:15.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Camera.cs",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Camera.cs",
+              "RelativeDocumentMoniker": "Common\\Camera.cs",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Camera.cs",
+              "RelativeToolTip": "Common\\Camera.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAAwGEAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T15:00:47.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "VlcPlayerWindow.xaml",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Tools\\Vlc\\VlcPlayerWindow.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\Tools\\Vlc\\VlcPlayerWindow.xaml",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Tools\\Vlc\\VlcPlayerWindow.xaml",
-              "RelativeToolTip": "WpfApp1\\Tools\\Vlc\\VlcPlayerWindow.xaml",
+              "Title": "AssimpWindowThree.xaml",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Project\\AssimpWindowThree.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\Project\\AssimpWindowThree.xaml",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Project\\AssimpWindowThree.xaml",
+              "RelativeToolTip": "WpfApp1\\Project\\AssimpWindowThree.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-06T11:34:00.109Z",
+              "WhenOpened": "2024-12-06T14:59:18.848Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "VlcPlayerWindow.xaml.cs",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Tools\\Vlc\\VlcPlayerWindow.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\Tools\\Vlc\\VlcPlayerWindow.xaml.cs",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Tools\\Vlc\\VlcPlayerWindow.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\Tools\\Vlc\\VlcPlayerWindow.xaml.cs",
-              "ViewState": "AgIAAJ8AAAAAAAAAAAAswDIAAAAJAAAAAAAAAA==",
+              "Title": "AssimpWindowThree.xaml.cs",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Project\\AssimpWindowThree.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\Project\\AssimpWindowThree.xaml.cs",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Project\\AssimpWindowThree.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\Project\\AssimpWindowThree.xaml.cs",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAAAH0AAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T11:09:13.43Z",
+              "WhenOpened": "2024-12-06T14:53:53.979Z",
               "EditorCaption": ""
             }
           ]

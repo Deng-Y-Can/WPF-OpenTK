@@ -56,6 +56,7 @@ namespace WpfApp
         public enum PickState
         {
             No_pick,//不同取点方法
+            Screeen_pick,
             Z_pick,
             Color_pick,
         }
@@ -93,6 +94,7 @@ namespace WpfApp
         private float rotatefactor;  //左键旋转因子（模型）
         private float _scalingEnlargeFactor;  //放大因子
         private float _scalingReduceFactor;  //缩小因子
+        private float _scalingPositionFactor;
         float hight;                         //文本框高度因子
         private int decimalPlaces; //文本框小数位数
         private float _radians = 0;         //旋转角度
@@ -121,15 +123,37 @@ namespace WpfApp
             backgroundColor = new Color4(0.75f, 1f, 0.75f, 1.0f);
             cameraSpeed = 0.15f;            //摄像机移动速度（按键）
             sensitivity = 0.02f;            //右键平移因子
-            change = 3.0f;                  //按键改变因子
+            change = 0.01f;                  //按键改变因子
             mousechange = 0.045f;           //左键旋转因子（摄像机）
             rotatefactor = 0.45f;           //左键旋转因子（模型）
-            _scalingEnlargeFactor = 1.15f;  //缩小因子
-            _scalingReduceFactor = 0.8695f;   //放大因子
+            _scalingEnlargeFactor = 1.1f;  //缩小因子
+            _scalingReduceFactor = 0.9091f;   //放大因子
+            _scalingPositionFactor = 1f;    //摄像机放缩因子
             hight = 0.08f;                  //文本框高度因子
             decimalPlaces = 5;              //文本框小数位数
         }
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+
+        private float scaling = 1;
+        public void scalingFuction(float value)
+        {
+            localModel = localModel * Matrix4.CreateScale(1 / scaling);
+            if (scaling > 1)
+            {
+                scaling = value > 0 ? (scaling + 1) : (scaling - 1);
+
+            }
+            else if (scaling == 1)
+            {
+                scaling = value > 0 ? scaling + 1 : 1 / (scaling + 1);
+            }
+            else
+            {
+                float reciprocal = value < 0 ? (1 / scaling) + 1 : (1 / scaling) - 1;
+                scaling = 1 / reciprocal;
+            }
+            localModel = localModel * Matrix4.CreateScale(scaling);
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // 创建 GLControl.
             optkGL = new GLControl();
@@ -165,10 +189,12 @@ namespace WpfApp
 
             //GL.Enable(EnableCap.StencilTest);//模板测试
             //GL.StencilMask(0xFF);//模板掩码 
-            chart.Height = 500;
-            chart.Width = 700;
+            chart.Height = 800;
+            chart.Width = 1000;
+
+            GL.Viewport(0, 0, 1000, 800);
+
             // 设置视口大小
-            GL.Viewport(0, 0, 700, 500);
 
             // GL.ClearColor(0.2f, 0.2f, 0.2f, 1.0f); // 设置清除颜色为灰色
 
@@ -235,7 +261,10 @@ namespace WpfApp
                 float[] maxlist = new float[] { vertexList._maxX, vertexList._minX, vertexList._maxY, vertexList._minY, vertexList._maxZ, vertexList._minZ };
                 float maxEdge = Tool.FindMaxAbsoluteValue(maxlist);
 
-                height = 1;
+                Vector3 newOrigin = new Vector3(-(vertexList._maxX + vertexList._minX) / 2, -(vertexList._maxY + vertexList._minY) / 2, -(vertexList._maxZ + vertexList._minZ) / 2);
+                TranslateModel(vertexList._vector3s, newOrigin);
+
+                height =0.5f* maxEdge;
                 ClearColor(backgroundColor);
                 _vertexBufferObject = GL.GenBuffer();
 
@@ -298,11 +327,12 @@ namespace WpfApp
         //放大缩小
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            Scaling(_scalingEnlargeFactor);
+
+            Scaling(_scalingPositionFactor);
         }
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
-            Scaling(_scalingReduceFactor);
+            Scaling(-_scalingPositionFactor);
         }
         //旋转     
 
@@ -337,7 +367,7 @@ namespace WpfApp
                 MessageBox.Show("请先加载模型");
                 return;
             }
-            pickState = (PickState)(((int)pickState + 1) % 3);
+            pickState = (PickState)(((int)pickState + 1) % 4);
             if (pickState == PickState.No_pick)
             {
                 GL.DeleteFramebuffer(framebufferlist[0]);
@@ -363,6 +393,13 @@ namespace WpfApp
             {
                 this.label.Content = $@"";
                 this.getPoint.Content = "深度取点";
+                ResizePoint();
+                //Render();
+            }
+            if (pickState == PickState.Screeen_pick)
+            {
+                this.label.Content = $@"";
+                this.getPoint.Content = "屏幕取点";
                 ResizePoint();
                 //Render();
             }
@@ -436,15 +473,15 @@ namespace WpfApp
                 return;
             }
             ParameterDialog dialog = new ParameterDialog();
-            if (dialog.ShowDialog() == true)
+            if (dialog.ShowDialog() == true && dialog.paramX.Text != "")
             {
                 float paramX = float.Parse(dialog.ParamX);
                 float paramY = float.Parse(dialog.ParamY);
                 float paramZ = float.Parse(dialog.ParamZ);
 
                 var newOrigin = new Vector3(-paramX, -paramY, -paramZ); // 例如，将原点移动到 (-1, 0, 0)
-                List<Vector3D> changeVerctors = orginVerctors;
-                TranslateModel(changeVerctors, newOrigin);
+
+                TranslateModel(vertexList._vector3s, newOrigin);
                 ClearColor(backgroundColor);
                 ResizeParam();
                 MessageBox.Show($"原点变换成功！坐标原点已更新为：X:{paramX};Y:{paramY};Z:{paramZ}");
@@ -461,8 +498,8 @@ namespace WpfApp
                 Vector3D vector3 = new Vector3D(vertex4.X / vertex4.W, vertex4.Y / vertex4.W, vertex4.Z / vertex4.W);
                 newvertices.Add(vector3);
             }
-            orginVerctors = newvertices;
-            vertexList._vertices = Tool.Vector3iToIntArray(orginVerctors);
+
+            vertexList = new VertexList(newvertices);
             ClearColor(backgroundColor);
             _vertexBufferObject = GL.GenBuffer();
 
@@ -493,7 +530,7 @@ namespace WpfApp
         }
         private void Chart_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            change += 0.01f;
+
             Key keyPressed = (Key)e.KeyCode;
             switch (e.KeyCode.ToString())
             {
@@ -549,7 +586,9 @@ namespace WpfApp
                         {
                             if (moveModel)
                             {
-                                localModel = localModel * Matrix4.CreateTranslation(deltaX * sensitivity, -deltaY * sensitivity, 0);
+                                //localModel = localModel * Matrix4.CreateTranslation(deltaX * sensitivity, -deltaY * sensitivity, 0);
+                                _camera.Position -= _camera.Right * deltaX * sensitivity;
+                                _camera.Position -= _camera.Up * -deltaY * sensitivity;
                                 if (pickPointCount == PickPointCount.One)
                                 {
                                     PickupPoint(lastPickPoint, 0, 0);
@@ -576,17 +615,21 @@ namespace WpfApp
                         else
                         {
                             #region
-                            localModel = localModel * Matrix4.CreateTranslation(deltaX * sensitivity, -deltaY * sensitivity, 0);
-                            Render();
-                            //ClearColor(backgroundColor);
-                            //GL.BindVertexArray(_vertexArrayObject);
-                            //_shader.Use();
-                            //_shader.SetMatrix4("model", localModel);
-                           
-                            //_shader.SetMatrix4("view", _camera.GetViewMatrix());
-                            //_shader.SetMatrix4("projection", _camera.GetProjectionMatrix());
-                            //GL.DrawArrays(primitiveType, 0, verts);
-                            //glc.SwapBuffers();
+
+                            //localModel = localModel * Matrix4.CreateTranslation(deltaX * sensitivity, -deltaY * sensitivity, 0);
+
+                            _camera.Position -= _camera.Right * deltaX * sensitivity;
+                            _camera.Position -= _camera.Up * -deltaY * sensitivity;
+                            ClearColor(backgroundColor);
+                            GL.BindVertexArray(_vertexArrayObject);
+                            _shader.Use();
+                            _shader.SetMatrix4("model", localModel);
+
+                            _shader.SetMatrix4("view", _camera.GetViewMatrix());
+                            _shader.SetMatrix4("projection", _camera.GetProjectionMatrix());
+                            GL.DrawArrays(primitiveType, 0, vertexList._count);
+                            
+                            optkGL.SwapBuffers();
 
                             // Apply the camera pitch and yaw (we clamp the pitch in the camera class)
                             //_camera.Yaw -= deltaX * sensitivity;
@@ -599,6 +642,14 @@ namespace WpfApp
                     }
                     if (e.Button == MouseButtons.Left && leftMouseButtonDown)
                     {
+                        DateTime newDateTime = DateTime.Now;
+                        TimeSpan timeDifference = newDateTime - dateTime;
+                        double secondsDifference = timeDifference.TotalSeconds;
+
+                        if (secondsDifference < 0.01)
+                        {
+                            return;
+                        }
                         #region   左键旋转  物体移动
                        
                         localModel = Matrix4.CreateRotationX((float)MathHelper.DegreesToRadians(deltaX * rotatefactor)) *
@@ -637,16 +688,92 @@ namespace WpfApp
             }
 
         }
+       
+        public float FovChange(float change)
+        {
+            Matrix4 changeMatrix = localModel * _camera.GetViewMatrix() * _camera.GetProjectionMatrix();
+            vertexList.changeViwVertexDic = Tool.AfterConversiondDic(vertexList.originVertexDic, changeMatrix, true);
+            if (vertexList.changeViwVertexDic.Count >0)
+            {
+                int farIndex = vertexList.changeViwVertexDic.OrderBy(kvp => kvp.Value.Z).FirstOrDefault().Key;
+                int nearIndex = vertexList.changeViwVertexDic.OrderByDescending(kvp => kvp.Value.Z).FirstOrDefault().Key;
+                float far = vertexList.originVertexDic[farIndex].Z;
+                float near = vertexList.originVertexDic[nearIndex].Z;
+
+                far = Math.Abs(_camera.Position.Z - far) > Math.Abs(_camera.Position.Z - near) ? far : near;
+                if (_camera.Position.Z - far > 0)
+                {
+                    while (_camera.Position.Z - change - far < 0)
+                    {
+                        change = change * 0.1f;
+                    }
+                }
+                if (_camera.Position.Z - far < 0)
+                {
+                    while (_camera.Position.Z - change - far > 0)
+                    {
+                        change = change * 0.1f;
+                    }
+                }
+                float variation = Math.Abs(_camera.Position.Z - far);
+                int dimension = (int)Math.Floor(Math.Log10(Math.Abs(variation)));
+                sensitivity = (float)(0.02f * Math.Pow(10,dimension));
+            }
+           
+            
+            return change;
+        }
+
+        public float FarScreen()
+        {
+            Vector3D normal =Tool.To3D( _camera.Position - _camera.Front);
+            List<Vector3D> bvhList = Tool.BVH(vertexList._maxX, vertexList._minX, vertexList._maxY, vertexList._minY, vertexList._maxZ, vertexList._minZ);
+
+            double fardistance = 0;
+            Vector3D farvector3D = new Vector3D();
+            Plane farPlane = new Plane();
+
+            foreach (Vector3D vector3D in bvhList)
+            {
+                Plane plane = new Plane(normal, vector3D);
+                double distance = Plane.CalculateDistance(Tool.To3D(_camera.Position), plane.Normal, plane.D);
+                if (distance >fardistance)
+                {
+                    fardistance = distance;
+                    farvector3D = vector3D;
+                    farPlane = plane;
+                }
+            }
+            return farvector3D.Z;
+        }
+
+       
+
         private void Chart_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            FarScreen();
             if (_camera != null)
             {
                 //滚轮事件
                 //float dimension = Tool.FovChange(e.Delta,_camera.Fov);
                 //_camera.Fov -= e.Delta / dimension;//摄像机改变
-                float scale = Math.Abs(e.Delta / 100 > 0 ? e.Delta / 100 * _scalingEnlargeFactor : e.Delta / 100 * _scalingReduceFactor);
-                localModel = localModel * Matrix4.CreateScale(scale);
-               
+
+                //float scale = Math.Abs(e.Delta / 100 > 0 ? e.Delta / 100 * _scalingEnlargeFactor : e.Delta / 100 * _scalingReduceFactor);
+                //localModel = localModel * Matrix4.CreateScale(scale);
+
+                float frontLength = e.Delta / 100 * _scalingPositionFactor;
+
+                //指数函数变换，变换过大
+                //frontX += cameraSpeed * frontLength;
+                //float y = Tool.SolveForY(frontX, vertexList._maxZ, 1,1);
+                //float change =   _camera.Position.Z- Tool.SolveForY(frontX, vertexList._maxZ, 1, 1);
+                // _camera.Position += _camera.Front * (change);
+
+                //步进值逐减，但不确定最远点
+                float change = cameraSpeed * frontLength;
+                float i = FovChange(change);
+                _camera.Position += _camera.Front * i;
+                //_camera.Position += _camera.Front * cameraSpeed * frontLength;
                 _firstMove = true;
                 if (pickState != PickState.No_pick)
                 {
@@ -668,11 +795,13 @@ namespace WpfApp
 
         }
 
+        DateTime dateTime = DateTime.Now;
         private void Chart_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 leftMouseButtonDown = true;
+                dateTime = DateTime.Now;
             }
             if (e.Button == MouseButtons.Right)
             {
@@ -716,7 +845,7 @@ namespace WpfApp
                     Vector4 depthin = new Vector4(ndcX, ndcY, originalDepth, 1) * inverseMatrix;
 
                     Vector3D vector3D = new Vector3D(depthin.X / depthin.W, depthin.Y / depthin.W, depthin.Z / depthin.W);
-                    Vector3D vector3Dnear = Tool.ContainsVector3D(orginVerctors, vector3D);
+                    Vector3D vector3Dnear = Tool.ContainsVector3D(vertexList._vector3s, vector3D);
                     Vector3 vector3near = new Vector3(vector3Dnear.X, vector3Dnear.Y, vector3Dnear.Z);
                     if (!Tool.IsZero(vector3near, Tool.unReach))
                     {
@@ -765,21 +894,37 @@ z:{depcolor.Z}";
                 _firstMove = true;
 
                 #region
-               // 1.进行拾取操作 先将所有点转换成变换后的坐标，取与捕获点最近的四个，再从中找出Z值最小的一个作为捕获点Z值，然后通过逆矩阵求出原来的点
-                //                 List<Vector3> originalPoints = Tool.ArrayToList(_vertices, 0);
-                // List<Vector3> points = AfterConversion(originalPoints);
-                // List<Vector3> vector3nearfour = PointDistanceComparer.FindNearestFourPoints(new Vector3(ndcX, ndcY, 1), points);
-                // Vector3 nearFZ = vector3nearfour.OrderBy(v => v.Z).FirstOrDefault(); //Tool.FindNearPointsOnLine(points, nearvector, farvector);
-                // Vector4 ndcin = new Vector4(ndcX, ndcY, nearFZ.Z, 1) * inverseMatrix;
-                // Vector3 near = new Vector3(ndcin.X / ndcin.W, ndcin.Y / ndcin.W, ndcin.Z / ndcin.W);
+                //1.进行拾取操作 先将所有点转换成变换后的坐标，取与捕获点最近的四个，再从中找出Z值最小的一个作为捕获点Z值，然后通过逆矩阵求出原来的点
+                if (pickState == PickState.Screeen_pick)
+                {
+                    //比较屏幕中的最近点
+                    Matrix4 changeMatrix = localModel * _camera.GetViewMatrix() * _camera.GetProjectionMatrix();
+                   // vertexList.changeVertexDic = Tool.AfterConversiondDic(vertexList.originVertexDic, changeMatrix);
+                    vertexList.changeViwVertexDic = Tool.AfterConversiondDic(vertexList.originVertexDic, changeMatrix,true);
+                    int pointIndex = Tool.FindNearestPointOnDictory(vertexList.changeViwVertexDic, new Vector3D(ndcX, ndcY, 1));
 
-                // //比较最近点
-                // near = Tool.FindNearest3DPoint(originalPoints, near, 5, out double nearst);
-                // this.label.Content = $@"x:{near.X};
-                // y:{near.Y};
-                // z:{near.Z}
-                // 距离：{nearst}";
 
+                    if (pointIndex != -1)
+                    {
+                        Vector3D vector3nearPoint = vertexList.originVertexDic[pointIndex];
+                        this.label.Content = $@"x:{vector3nearPoint.X};
+y:{vector3nearPoint.Y}; 
+z:{vector3nearPoint.Z}";
+                        if (pickPointCount == PickPointCount.One)
+                        {
+                            PickupPoint(new Vector3(vector3nearPoint.X, vector3nearPoint.Y, vector3nearPoint.Z), 0, 0, true);
+                        }
+                        if (pickPointCount == PickPointCount.Two)
+                        {
+                            PickupLine(new Vector3(vector3nearPoint.X, vector3nearPoint.Y, vector3nearPoint.Z), 0, 0, true);
+                        }
+
+                    }
+                    else
+                    {
+                        this.label.Content = $@"no pick";
+                    }
+                }
 
                 // //3.以近平面和远平面组成的向量与点进行距离计算，取最近的一个点
                 //                 Vector4 nearPonint = new Vector4(ndcX, ndcY, -1, 1) * inverseMatrix;
@@ -803,7 +948,9 @@ z:{depcolor.Z}";
 
         private void PickupPoint(Vector3 vector, float mouseX = 0, float mouseY = 0, bool isNewPoint = false)
         {
-            ClearColor(backgroundColor);
+            try 
+            {
+                ClearColor(backgroundColor);
 
 
             float centerndcX = 0f;
@@ -915,7 +1062,10 @@ Z: {SizeFormat(vector.Z)}";
             GL.PointSize(1f);
             lastPickPoint = vector;
             optkGL.SwapBuffers();
-
+            }
+            catch
+            {
+            }
         }
 
         private void PickupLine(Vector3 vector, float mouseX = 0, float mouseY = 0, bool IsNewPoint = false)
@@ -1132,6 +1282,46 @@ Z: {SizeFormat(vector.Z)}";
             GL.PointSize(1);
         }
 
+        private readonly uint[] _indicebhv =
+        {
+            0, 1,2,
+            1, 2,3,
+            4, 5, 6,
+            5, 6,7,
+            0,1,4,
+            1,4,5,
+            2,3,6,
+            3,6,7,
+            0,2,4,
+            2,4,6,
+            1,3,5,
+            3,5,7
+        };
+        public void RenerBHV()
+        {
+            List<Vector3D> bvhList = Tool.BVH(vertexList._maxX, vertexList._minX, vertexList._maxY, vertexList._minY, vertexList._maxZ, vertexList._minZ);
+            float[] _vertices4 = Tool.Vector3iToIntArray(bvhList);
+            _shader = new Shader(vertPickLineShader, GetfragPickPointShader("0.6,0.5,0.52,1"), 0);
+            _shader.Use();
+            var _vertexBufferObject5 = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBufferObject5);
+            GL.BufferData(BufferTarget.ArrayBuffer, _vertices4.Length * sizeof(float), _vertices4, BufferUsageHint.StaticDraw);
+
+            var _vertexArrayObject5 = GL.GenVertexArray();
+            GL.BindVertexArray(_vertexArrayObject5);
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);//解析顶点
+            GL.EnableVertexAttribArray(0);
+
+            _elementBufferObject = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, _indicebhv.Length * sizeof(uint), _indicebhv, BufferUsageHint.StaticDraw);
+            SetMVP();
+            GL.PointSize(5);
+            GL.DrawElements(PrimitiveType.Triangles, _indicebhv.Length, DrawElementsType.UnsignedInt, 0);
+
+            GL.PointSize(1);
+        }
+
         // 计算两个Vector3D之间的距离     
         public void Render()
         {
@@ -1161,7 +1351,8 @@ Z: {SizeFormat(vector.Z)}";
 
                 GL.BindVertexArray(_vertexArrayObject);
                 _shader.Use();
-                localModel = localModel * Matrix4.CreateScale(scalingFactor);
+                _camera.Position += _camera.Front * cameraSpeed * scalingFactor;
+                // localModel = localModel * Matrix4.CreateScale(scalingFactor);
                 //_camera.Fov -= scalingFactor;//改变摄像机角度
                 SetMVP();
                 GL.DrawArrays(primitiveType, 0, vertexList._count);
@@ -1239,18 +1430,7 @@ Z: {SizeFormat(vector.Z)}";
                 optkGL.SwapBuffers();
             }
         }
-        public List<Vector3> AfterConversion(List<Vector3> vector3s)
-        {
-            List<Vector3> result = new List<Vector3>();
-            Matrix4 inverseMatrix = localModel * _camera.GetViewMatrix() * _camera.GetProjectionMatrix();
-            for (int i = 0; i < vector3s.Count(); i++)
-            {
-                Vector4 vector4 = new Vector4(vector3s[i].X, vector3s[i].Y, vector3s[i].Z, 1f) * inverseMatrix;
-                Vector3 vector3 = new Vector3(vector4.X / vector4.W, vector4.Y / vector4.W, vector4.Z / vector4.W);
-                result.Add(vector3);
-            }
-            return result;
-        }
+
         public uint ReadStageVertexId(int x, int y)
         {
             byte[] pixels = new byte[4];
@@ -1371,6 +1551,19 @@ Z: {SizeFormat(vector.Z)}";
                 outputColor = vec4({color2});
             else 
                 outputColor = vec4({color3});
+            }}
+            ";
+        }
+
+
+        public string GetfragPickPointShader(string color1)
+        {
+            return $@"
+            #version 330
+            out vec4 outputColor;
+            void main()
+            {{
+                outputColor = vec4({color1});
             }}
             ";
         }
@@ -1537,7 +1730,7 @@ Z: {SizeFormat(vector.Z)}";
 
                 //this.InvalidateVisual();
 
-
+                UpdateLayout();
                 GL.Viewport(0, 0, (int)chartWidth, (int)chartHeight);
                 //ClearColor(backgroundColor);
                 Render();

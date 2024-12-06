@@ -11,6 +11,58 @@ namespace WpfApp
 {
     public class Tool()
     {
+        public static List<Vector3D> BVH(float maxX, float minX, float maxY, float minY, float maxZ, float minZ)
+        {
+            float k = 0f;
+            maxX += k;
+            maxY += k;
+            maxZ += k;
+            minX -= k;
+            minY -= k;
+            minZ -= k;
+            List<Vector3D> bvhList = new List<Vector3D>();
+            bvhList.Add(new Vector3D(minX, minY, minZ));
+            bvhList.Add(new Vector3D(maxX, minY, minZ));
+            bvhList.Add(new Vector3D(minX, maxY, minZ));
+            bvhList.Add(new Vector3D(maxX, maxY, minZ));
+            bvhList.Add(new Vector3D(minX, minY, maxZ));
+            bvhList.Add(new Vector3D(maxX, minY, maxZ));
+            bvhList.Add(new Vector3D(minX, maxY, maxZ));
+            bvhList.Add(new Vector3D(maxX, maxY, maxZ));
+            return bvhList;
+        }
+        public static Dictionary<int, Vector3D> AfterConversiondDic(Dictionary<int, Vector3D> originVertexDic, Matrix4 inverseMatrix,bool isVisible=false)
+        {
+            Dictionary<int, Vector3D> keyValueVertexList = new Dictionary<int, Vector3D>();
+
+            foreach (KeyValuePair<int, Vector3D> kvp in originVertexDic)
+            {
+                Vector4 vector4 = new Vector4(kvp.Value.X, kvp.Value.Y, kvp.Value.Z, 1f) * inverseMatrix;
+                Vector3D vector3D = new Vector3D(vector4.X / vector4.W, vector4.Y / vector4.W, vector4.Z / vector4.W);
+                if (isVisible&&(Math.Abs(vector3D.X)>1|| Math.Abs(vector3D.Y) > 1|| Math.Abs(vector3D.Z) > 1))
+                {
+                    continue;
+                }
+                else
+                {
+                    keyValueVertexList.Add(kvp.Key, vector3D);
+                } 
+            }
+            return keyValueVertexList;
+        }
+
+        public static List<Vector3D> AfterConversionList(List<Vector3D> vector3s, Matrix4 inverseMatrix)
+        {
+            List<Vector3D> result = new List<Vector3D>();
+           // Matrix4 inverseMatrix = localModel * _camera.GetViewMatrix() * _camera.GetProjectionMatrix();
+            for (int i = 0; i < vector3s.Count(); i++)
+            {
+                Vector4 vector4 = new Vector4(vector3s[i].X, vector3s[i].Y, vector3s[i].Z, 1f) * inverseMatrix;
+                Vector3D vector3 = new Vector3D(vector4.X / vector4.W, vector4.Y / vector4.W, vector4.Z / vector4.W);
+                result.Add(vector3);
+            }
+            return result;
+        }
         public static float[] Vector3iToIntArray(List<Vector3D> vectorList)
         {
             float[] vertices = new float[vectorList.Count() * 3];
@@ -25,6 +77,19 @@ namespace WpfApp
                 index++;
             }
             return vertices;
+        }
+
+        public static Dictionary<int, Vector3D> Vector3iToDictionary(List<Vector3D> vectorList )
+        {
+            Dictionary<int, Vector3D> keyValueVertexList =new Dictionary<int, Vector3D>();
+            int index = 1;
+           
+            for (int i = 0; i < vectorList.Count(); i++)
+            {
+                keyValueVertexList.Add(index, vectorList[i]);
+                index++;
+            }
+            return keyValueVertexList;
         }
 
         public static int[] FaceToIntArray(List<Face> faceList)
@@ -299,5 +364,138 @@ namespace WpfApp
             return (float)Math.Sqrt(sumOfSquares);
         }
 
+        // 已知y求x
+        // 已知x求y
+        public static float SolveForY(float x, float a, double b, double c)
+        {
+            // y = a + b / (e(cx))
+            double result = a + b / Math.Exp(c * x);
+            return (float)result;
+        }
+
+        // 已知y求x（需要注意，这个方法可能返回多个解，因为y=a+b/(e(cx))不是单调函数）
+        public static float SolveForX(float y, float a, double b, double c)
+        {
+            // y = a + b / (e(cx))
+            // 改写为: b / (e(cx)) = y - a
+            // 进一步改写为: e(cx) = b / (y - a)
+            // 最后得到: x = ln(b / (y - a)) / c
+
+            if (y <= a)
+            {
+                // 当y <= a时，方程无解，因为e(cx)总是正的，所以b / (e(cx))不可能等于或小于0
+                return 0;
+            }
+
+            double result = Math.Log(b / (y - a)) / c;
+            return (float)result;
+        }
+
+
+        public static Vector3D FindNearestPointOnList(List<Vector3D> points, Vector3D P)
+        {
+            if (points == null || points.Count == 0)
+            {
+                throw new ArgumentException("点集合不能为空");
+            }
+
+            Vector3D nearestPoint = points[0];
+            double minDistance = DistanceToScreen(points[0],P);
+
+            foreach (var point in points)
+            {
+                double distance = DistanceToScreen(points[0], P);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    nearestPoint = point;
+                }
+            }
+
+            return nearestPoint;
+        }
+        public static int FindNearestPointOnDictory(Dictionary<int, Vector3D> points, Vector3D P)
+        {
+            if (points == null || points.Count == 0)
+            {
+                throw new ArgumentException("点集合不能为空");
+            }
+            int index = -1;
+            float minz = 1;
+            float maxz = -1;
+            Vector3D near = new Vector3D();
+            double minDistance = -Tool.unReach;
+            foreach (KeyValuePair<int, Vector3D> kvp in points)
+            {
+                double distance = DistanceToScreen(kvp.Value, P);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    //near = kvp.Value;
+                    index = kvp.Key;
+                }
+                //if (kvp.Value.X > maxz)
+                //{
+                //    maxz = kvp.Value.X;
+                //}
+                //if (kvp.Value.X < minz)
+                //{
+                //    minz = kvp.Value.X;
+                //}
+            }
+            if (minDistance > 0.3)
+            {
+                return -1;
+            }
+
+            return index;
+        }
+
+        public static double DistanceToScreen(Vector3D other, Vector3D P)
+        {
+            return Math.Sqrt(Math.Pow(other.X - P.X, 2) + Math.Pow(other.Y - P.Y, 2));
+        }
+
+        public static Vector3 DTo3(Vector3D P)
+        {
+            return new Vector3(P.X, P.Y, P.Z);
+        }
+
+        public static Vector3D To3D( Vector3 P)
+        {
+            return new Vector3D(P.X, P.Y, P.Z);
+        }
+
     }
+
+
+    public class Plane
+    {
+        public Vector3D Normal { get; private set; }
+        public float D { get; private set; }  //平面到原点的距离
+
+        public Plane(Vector3D normal, Vector3D pointA)
+        {
+            Normal = normal;
+            D = -(Normal.X * pointA.X + Normal.Y * pointA.Y + Normal.Z * pointA.Z);
+        }
+
+        public Plane()
+        {
+        }
+
+        public override string ToString()
+        {
+            return $"{Normal.X}x + {Normal.Y}y + {Normal.Z}z + {D} = 0";
+        }
+        public static double CalculateDistance(Vector3D point, Vector3D planeNormal, double D)
+        {
+            // 计算点到平面的距离
+            double numerator = Math.Abs(planeNormal.X * point.X + planeNormal.Y * point.Y + planeNormal.Z * point.Z + D);
+            double denominator = Math.Sqrt(planeNormal.X * planeNormal.X + planeNormal.Y * planeNormal.Y + planeNormal.Z * planeNormal.Z);
+            return numerator / denominator;
+        }
+    }
+
+
 }

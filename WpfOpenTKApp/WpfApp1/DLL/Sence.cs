@@ -264,6 +264,7 @@ namespace WpfApp
         {
             _vector3s = vector3Ds;
             _vertices = Tool.Vector3iToIntArray(_vector3s);
+            originVertexDic = Tool.Vector3iToDictionary(_vector3s);
             _maxX = _vector3s.Max(v => v.X);
             _minX = _vector3s.Min(v => v.X);
             _maxY = _vector3s.Max(v => v.Y);
@@ -273,9 +274,11 @@ namespace WpfApp
             _verticeMax = _vertices.Max();
             _verticeMin = _vertices.Min();
             _count = _vector3s.Count();
+
         }
         public float[] _vertices;
         public List<Vector3D> _vector3s;
+
         public float _maxX;
         public float _minX;
         public float _maxY;
@@ -285,6 +288,11 @@ namespace WpfApp
         public float _verticeMax;
         public float _verticeMin;
         public int _count;
+        public Dictionary<int, Vector3D> originVertexDic;
+        public Dictionary<int, Vector3D> changeViwVertexDic;//可见点
+        public Dictionary<int, Vector3D> changeVertexDic;
+
+
     }
 
 
