@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\App.xaml
-19-145530615
+20-73452628
 
-26-174866124
-243651431933
-Basic\CameraWindow.xaml;Basic\CubeWindow.xaml;Basic\EBOWindow.xaml;Basic\GeometryWindow.xaml;Basic\MainGLFourWindow.xaml;Basic\MainGLWindow.xaml;Basic\MoreAttributesWindow.xaml;Basic\MultipleTexturesWindow.xaml;Basic\TexturesWindow.xaml;Basic\TransformationsWindow.xaml;Basic\UniformsWindow.xaml;CoordinatesSystemsWindow.xaml;Light\BasicLightWindow.xaml;Light\ColorWindow.xaml;Light\MaterialsWindow.xaml;Project\AssimpWindow.xaml;Project\AssimpWindowThree.xaml;Project\AssimpWindowTwo.xaml;UseWindow\ParameterDialog.xaml;
+27-1238596767
+2451736233648
+Basic\CameraWindow.xaml;Basic\CubeWindow.xaml;Basic\EBOWindow.xaml;Basic\GeometryWindow.xaml;Basic\MainGLFourWindow.xaml;Basic\MainGLWindow.xaml;Basic\MoreAttributesWindow.xaml;Basic\MultipleTexturesWindow.xaml;Basic\TexturesWindow.xaml;Basic\TransformationsWindow.xaml;Basic\UniformsWindow.xaml;CoordinatesSystemsWindow.xaml;Light\BasicLightWindow.xaml;Light\ColorWindow.xaml;Light\MaterialsWindow.xaml;Project\AssimpWindow.xaml;Project\AssimpWindowThree.xaml;Project\AssimpWindowTwo.xaml;Tools\Vlc\VlcPlayerWindow.xaml;UseWindow\ParameterDialog.xaml;
 
 True
 

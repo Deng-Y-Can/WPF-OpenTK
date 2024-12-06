@@ -49,6 +49,9 @@
     <Compile Update="Light\MaterialsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Tools\Vlc\VlcPlayerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Project\AssimpWindow.xaml">
@@ -94,6 +97,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Light\MaterialsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tools\Vlc\VlcPlayerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

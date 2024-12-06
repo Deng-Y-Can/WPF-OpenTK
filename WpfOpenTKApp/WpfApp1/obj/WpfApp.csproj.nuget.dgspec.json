@@ -139,6 +139,14 @@
               "target": "Package",
               "version": "[4.1.0, )"
             },
+            "LibVLCSharp": {
+              "target": "Package",
+              "version": "[3.9.1, )"
+            },
+            "LibVLCSharp.WPF": {
+              "target": "Package",
+              "version": "[3.9.1, )"
+            },
             "Microsoft.Windows.Compatibility": {
               "target": "Package",
               "version": "[8.0.10, )"
@@ -154,6 +162,10 @@
             "StbImageSharp": {
               "target": "Package",
               "version": "[2.30.15, )"
+            },
+            "VideoLAN.LibVLC.Windows": {
+              "target": "Package",
+              "version": "[3.0.21, )"
             }
           },
           "imports": [

@@ -39,6 +39,25 @@
           }
         }
       },
+      "LibVLCSharp/3.9.1": {
+        "runtime": {
+          "lib/net8.0/LibVLCSharp.dll": {
+            "assemblyVersion": "3.9.1.0",
+            "fileVersion": "3.9.1.0"
+          }
+        }
+      },
+      "LibVLCSharp.WPF/3.9.1": {
+        "dependencies": {
+          "LibVLCSharp": "3.9.1"
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/LibVLCSharp.WPF.dll": {
+            "assemblyVersion": "3.9.1.0",
+            "fileVersion": "3.9.1.0"
+          }
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/5.0.0": {
         "runtime": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
@@ -2135,7 +2154,8 @@
             "fileVersion": "4.6.24705.1"
           }
         }
-      }
+      },
+      "VideoLAN.LibVLC.Windows/3.0.21": {}
     }
   },
   "libraries": {
@@ -2145,6 +2165,20 @@
       "sha512": "sha512-z/4Tmf3Q2r1+vN6o/szArEZvPsdYNRYiS0L/yArybQd7n7KCiS9L4lRZhwwlHJb/edECM+Jky0XisVspr5aQWQ==",
       "path": "assimpnet/4.1.0",
       "hashPath": "assimpnet.4.1.0.nupkg.sha512"
+    },
+    "LibVLCSharp/3.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SNvZz5bIJJ0GAaywmXyskZ+ZO42vomDUWXIo5qDpsG9x2kdQrtOuqRx/KNQDnbxBBStYXQUI7DlhzJwz/3xG6g==",
+      "path": "libvlcsharp/3.9.1",
+      "hashPath": "libvlcsharp.3.9.1.nupkg.sha512"
+    },
+    "LibVLCSharp.WPF/3.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SiXkJWWAVgboYY6sZlZYSHJXhvCUOjmzWwqsPg5B/BjZ4AqzoT4dWbSE2ZslG3a5neu+WGDMYNYJmSugjN88oQ==",
+      "path": "libvlcsharp.wpf/3.9.1",
+      "hashPath": "libvlcsharp.wpf.3.9.1.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/5.0.0": {
       "type": "package",
@@ -3139,6 +3173,13 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "VideoLAN.LibVLC.Windows/3.0.21": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1b1yjZPIzS2+s6YZv9Z5Co/q2srIvo03ZToPvZblWreeyeFGkLDwX7WZat8AxCB9uMQV6VUnms67SgQqko7Z0w==",
+      "path": "videolan.libvlc.windows/3.0.21",
+      "hashPath": "videolan.libvlc.windows.3.0.21.nupkg.sha512"
     }
   }
 }
