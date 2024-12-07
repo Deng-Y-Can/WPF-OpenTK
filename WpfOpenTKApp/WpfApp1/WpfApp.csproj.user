@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="ListWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Project\AssimpWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -54,6 +57,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="ListWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Project\AssimpWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

@@ -3,32 +3,16 @@
   "WorkspaceRootPath": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\dll\\sence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\dll\\sence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\listwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\listwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\dll\\tool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\dll\\tool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\listwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\listwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\project\\assimpwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\project\\assimpwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\project\\assimpwindowthree.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\project\\assimpwindowthree.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFCD67F5-848C-4E0E-9380-812118240BA1}|Common\\Common.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\common\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFCD67F5-848C-4E0E-9380-812118240BA1}|Common\\Common.csproj|solutionrelative:common\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFCD67F5-848C-4E0E-9380-812118240BA1}|Common\\Common.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\common\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFCD67F5-848C-4E0E-9380-812118240BA1}|Common\\Common.csproj|solutionrelative:common\\shader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFCD67F5-848C-4E0E-9380-812118240BA1}|Common\\Common.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\common\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFCD67F5-848C-4E0E-9380-812118240BA1}|Common\\Common.csproj|solutionrelative:common\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|e:\\home\\github\\wpfopentk\\wpf-opentk\\wpfopentkapp\\wpfapp1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7C8084CB-63D0-4550-9827-066E14FC1924}|WpfApp1\\WpfApp.csproj|solutionrelative:wpfapp1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,92 +30,39 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ListWindow.xaml.cs",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\ListWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\ListWindow.xaml.cs",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\ListWindow.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\ListWindow.xaml.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAYwFkAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T02:09:03.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AssimpWindow.xaml.cs",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Project\\AssimpWindow.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\Project\\AssimpWindow.xaml.cs",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Project\\AssimpWindow.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\Project\\AssimpWindow.xaml.cs",
-              "ViewState": "AgIAAEQCAAAAAAAAAAAawFMCAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-07T01:59:50.28Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Texture.cs",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Texture.cs",
-              "RelativeDocumentMoniker": "Common\\Texture.cs",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Texture.cs",
-              "RelativeToolTip": "Common\\Texture.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-07T01:57:09.872Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Shader.cs",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Shader.cs",
-              "RelativeDocumentMoniker": "Common\\Shader.cs",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Shader.cs",
-              "RelativeToolTip": "Common\\Shader.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-07T01:53:14.818Z",
+              "Title": "App.xaml",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\App.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\App.xaml",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\App.xaml",
+              "RelativeToolTip": "WpfApp1\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-07T02:06:44.955Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Sence.cs",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\DLL\\Sence.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\DLL\\Sence.cs",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\DLL\\Sence.cs",
-              "RelativeToolTip": "WpfApp1\\DLL\\Sence.cs",
-              "ViewState": "AgIAAGABAAAAAAAAAAAswIgBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T15:37:07.234Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Tool.cs",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\DLL\\Tool.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\DLL\\Tool.cs",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\DLL\\Tool.cs",
-              "RelativeToolTip": "WpfApp1\\DLL\\Tool.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAA8wL0BAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T15:31:15.417Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Camera.cs",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Camera.cs",
-              "RelativeDocumentMoniker": "Common\\Camera.cs",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\Common\\Camera.cs",
-              "RelativeToolTip": "Common\\Camera.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T15:00:47.395Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AssimpWindowThree.xaml",
-              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Project\\AssimpWindowThree.xaml",
-              "RelativeDocumentMoniker": "WpfApp1\\Project\\AssimpWindowThree.xaml",
-              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\Project\\AssimpWindowThree.xaml",
-              "RelativeToolTip": "WpfApp1\\Project\\AssimpWindowThree.xaml",
+              "Title": "ListWindow.xaml",
+              "DocumentMoniker": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\ListWindow.xaml",
+              "RelativeDocumentMoniker": "WpfApp1\\ListWindow.xaml",
+              "ToolTip": "E:\\home\\github\\WPFOpenTK\\WPF-OpenTK\\WpfOpenTKApp\\WpfApp1\\ListWindow.xaml",
+              "RelativeToolTip": "WpfApp1\\ListWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-06T14:59:18.848Z",
+              "WhenOpened": "2024-12-07T02:06:34.305Z",
               "EditorCaption": ""
             }
           ]

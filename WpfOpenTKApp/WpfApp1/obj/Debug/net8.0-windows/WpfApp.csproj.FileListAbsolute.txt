@@ -1174,3 +1174,5 @@ E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\bin\Debug\net8.0-window
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\bin\Debug\net8.0-windows\LibVLCSharp.dll
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\bin\Debug\net8.0-windows\LibVLCSharp.WPF.dll
 E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\WpfApp_Content.g.cs
+E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\ListWindow.g.cs
+E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\obj\Debug\net8.0-windows\ListWindow.baml
