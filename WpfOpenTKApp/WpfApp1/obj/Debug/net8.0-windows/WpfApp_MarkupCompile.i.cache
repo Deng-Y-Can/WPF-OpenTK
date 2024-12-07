@@ -16,5 +16,5 @@ E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\App.xaml
 2451736233648
 Basic\CameraWindow.xaml;Basic\CubeWindow.xaml;Basic\EBOWindow.xaml;Basic\GeometryWindow.xaml;Basic\MainGLFourWindow.xaml;Basic\MainGLWindow.xaml;Basic\MoreAttributesWindow.xaml;Basic\MultipleTexturesWindow.xaml;Basic\TexturesWindow.xaml;Basic\TransformationsWindow.xaml;Basic\UniformsWindow.xaml;CoordinatesSystemsWindow.xaml;Light\BasicLightWindow.xaml;Light\ColorWindow.xaml;Light\MaterialsWindow.xaml;Project\AssimpWindow.xaml;Project\AssimpWindowThree.xaml;Project\AssimpWindowTwo.xaml;Tools\Vlc\VlcPlayerWindow.xaml;UseWindow\ParameterDialog.xaml;
 
-False
+True
 

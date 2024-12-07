@@ -26,7 +26,6 @@ using Vector3D = Assimp.Vector3D;
 using Vector4 = OpenTK.Mathematics.Vector4;
 using Window = System.Windows.Window;
 using Color = System.Drawing.Color;
-using Common;
 using System.IO;
 
 namespace WpfApp
