@@ -18,7 +18,7 @@ namespace WpfApp.Tools.Vlc
         {
             InitializeComponent();
         }
-        string url = $@"E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Tools\Vlc\file\夏洛特.ifox";//01.Docker -Docker 容器的数据管理简介.mp4
+        string url = $@"E:\home\github\WPFOpenTK\WPF-OpenTK\WpfOpenTKApp\WpfApp1\Tools\Vlc\file\xy.jpg";//01.Docker -Docker 容器的数据管理简介.mp4
         LibVLC _libvlc;
         MediaPlayer player;
         private Point _mouseDownPoint;
